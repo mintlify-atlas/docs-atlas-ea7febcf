@@ -1,0 +1,34 @@
+---
+title: Site activations
+description: Learn about activating your Beaver Builder license on production, development, and staging sites, including multisite installations.
+---
+
+Site activation is required to enable automatic updates and qualify for support on a domain. Activating your license key connects your website to our update server and adds it to the domain manager in your account.
+
+## Development & staging activations
+
+Beaver Builder license types have a site limit on the number of production websites they can be activated on. However, we allow unlimited activations on development and staging websites.
+
+We detect if a site is a development or staging website using the following ruleset:
+
+### Detection criteria
+
+- **IP address:** 192.168.0.1
+- **Subdomain:** test.example.com, testing.example.com, sandbox.example.com, dev.example.com, local.example.com, stage.example.com, staging.example.com
+- **TLD:** example.local, example.loc, example.localhost, example.test, example.dev
+- **No TLD:** localhost
+- **Host staging:** .flywp.xyz, .instawp.xyz, .temp-site.link, .wp1.site, bigscoots-staging.com, closte.com, cloudwaysapps.com, cloudwayssites.com, flywheelstaging.com, kinsta.cloud, myftpupload.com, onrocket.site, tempurl.host, wpcomstaging.com, wpengine.com, wpenginepowered.com
+
+When your development or staging URL aligns with any of the above, it will be categorized as a development or staging site and will not be included in your license site limit count.
+
+<Tip>
+The Domain Manager displays a **"Staging"** label next to the domain name if it is a staging or development domain. This label helps identify sites that are not intended for production use.
+</Tip>
+
+<Note>
+We use the [WordPress Site URL](https://wordpress.org/documentation/article/settings-general-screen/#site-address-url) to determine the website domain. Therefore, any website served in a subdirectory (e.g., _https://example.com/staging_) will be treated as a production URL.
+</Note>
+
+## WordPress multisite
+
+In WordPress Multisite network installations, subsites are not considered separate sites and do not count towards your license site activation limit.

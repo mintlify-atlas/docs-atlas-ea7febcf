@@ -1,0 +1,108 @@
+---
+title: The Top Bar
+description: Learn about the Top Bar which allows you to access the Content panel, Tools menu, view the title of the page or post you're editing, and more.
+---
+
+This article covers the Beaver Builder Top bar which allows you to access the Content panel, Tools menu, view the title of the page or post you're editing, and more.
+
+## Title Bar
+
+Shows what you're editing (page post, etc.) and its title.
+
+<Warning>
+Sometimes users experience issues where the **Title Bar** does not show the correct title information for the post/page they are editing. In this case, please refer to the Incorrect Title in Top Bar troubleshooting article.
+</Warning>
+
+## Access the Tools Menu
+
+Click the down arrow in the title bar to access the Tools menu.
+
+## Notifications icon
+
+Click the bell icon to open notifications from the Beaver Builder blog.
+
+<Info>
+If you have the Unlimited license installed with white labeling enabled, the icon will not be visible in the Beaver Builder UI. Alternatively, you can deactivate it by utilizing the `fl_disable_notifications` filter.
+</Info>
+
+## Saving indicator
+
+As you edit your layouts you'll see the sequence **Saving - Saved - Edited** appear in the upper right corner of the **Top Bar**. This indicates your changes are saved even before you save or publish those changes.
+
+<Info>
+The autosave functionality of Beaver Builder is provided by WordPress. You can change the `AUTOSAVE_INTERVAL` constant value to determine how often the autosave runs. In the example below, we've set it to `86400` seconds, which is one whole day. This effectively disables the autosave feature.
+
+```php
+define('AUTOSAVE_INTERVAL', 86400);
+```
+</Info>
+
+## Outline panel
+
+Click the Outline icon in the **Top Bar** to open the Outline panel, which lets you view and modify the structure of your page layout in an outline format.
+
+See the [Outline Panel](/beaver-builder/user-interface/outline-panel) article for more information.
+
+## Assistant
+
+The Assistant plugin's icon will appear in the **Top Bar** when Assistant is installed and activated on your site. Giving you quick access to open and close Assistant plugin.
+
+## Beaver Cloud
+
+The Cloud icon allows you to connect to your Beaver Builder Cloud account and access your saved WordPress assets from any site where you're using Beaver Builder.
+
+<Info>
+When the Assistant by Beaver Builder plugin is installed, the cloud icon is replaced with the Assistant logo.
+</Info>
+
+## The Content Panel
+
+Click **+** to open and **x** to close. See the [Content panel](/beaver-builder/user-interface/content-panel) article for more information.
+
+<Tip>
+This icon does not appear when the panel is pinned to the left or right side of the screen. Instead, there's a show or hide icon at the bottom of the panel.
+</Tip>
+
+## Done button
+
+The behavior of the **Done** button depends on whether you've made any editing changes in this session.
+
+- The **Done** button will appear **gray** when there has been no editing changes: Click **Done** when it's gray and you exit the Beaver Builder editor with one click.
+
+- The **Done** button will appear **blue** where there has been editing changes, and the status *Edited* appears to the left.
+
+When you're done editing a page in Beaver Builder, click **Done** in the upper right corner and select one of the following:
+
+### Discard
+
+Discards all changes made or saved since the last time the page was published. This includes all saved but unpublished work from previous sessions.
+
+<Warning>
+Changes in Beaver Builder are preserved as you make them. When you click **Discard**, you lose all saved changes since the last time you published, and only publishing creates a revision you can go back to.
+</Warning>
+
+### Save Draft
+
+Saves your page and exits the Beaver Builder editor. The changes made in that editing session are not visible except when editing in Beaver Builder.
+
+<Info>
+If you save a draft, be careful about discarding future edits. In Beaver Builder, changes in the layout are saved as you edit, and the **Save draft** choice is a way of exiting Beaver Builder without publishing the changes. If you choose **Discard** in a future session, you'll lose all changes since you last published the page. Also, the WordPress Revisions feature only works with published changes, not saved drafts.
+
+Note that this can happen inadvertently if more than one person is editing the page at the same time. If another person discards edits on a page while you are editing the same page, your changes can be lost.
+</Info>
+
+### Publish
+
+Makes the changes live, accessible to the world at large if you're working on a public site.
+
+<Tip>
+- Consider publishing at regular intervals. This will create a WordPress revision that you can return to if you want to revert your most recent changes. This is also a good practice because there is no Undo when you're editing in Beaver Builder.
+
+- To publish your layout without closing the editor, use **Publish Layout** in the tools menu, or using the keyboard shortcut:
+  - `Cmd + P` (Mac)
+  - `Ctrl + P` (Windows)
+</Tip>
+
+### Cancel
+
+Returns you to the Beaver Builder editor.

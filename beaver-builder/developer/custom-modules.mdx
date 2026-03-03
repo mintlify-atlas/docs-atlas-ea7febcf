@@ -1,0 +1,181 @@
+---
+title: Custom modules
+description: Create custom modules for Beaver Builder with their own settings panels and functionality.
+---
+
+Creating custom modules for Beaver Builder can open up a world of possibilities for you and your clients. You can extend and modify our existing modules to fit a specific use case, or create brand new modules.
+
+<Info>
+We highly recommend taking advantage of our [Custom Module Developer Course](https://courses.wpbeaverbuilder.com/create-a-custom-beaver-builder-module), which offers a comprehensive guide on creating an Image Comparison Slider module.
+</Info>
+
+## Getting started
+
+To begin, feel free to download our example plugin below. You can explore the code or refer to the step-by-step guide provided in this section.
+
+<Steps>
+  <Step title="Download example plugin">
+    [Download the Example Plugin](https://github.com/beaverbuilder/bb-custom-module-examples/releases/latest/download/bb-custom-module-examples.zip) zip to your computer.
+  </Step>
+  <Step title="Upload to WordPress">
+    Go to your website's **WordPress Admin Dashboard > Plugins > Add New > Upload Plugin**.
+  </Step>
+  <Step title="Upload zip file">
+    Upload the `bb-custom-module-examples.zip` file.
+  </Step>
+  <Step title="Activate plugin">
+    **Activate** the plugin.
+  </Step>
+  <Step title="Find modules">
+    Launch Beaver Builder on a page and find the new **Example Modules** section in the Content Panel, containing the **Basic Example** and **Example** modules.
+  </Step>
+</Steps>
+
+<Tip>
+You can override any of the built-in modules by following the steps in the Override Built-In Modules article.
+</Tip>
+
+## Create a plugin
+
+To create custom modules, you will first need to create a simple plugin. This will ensure that your modules are not overwritten when updating Beaver Builder via the remote updates interface.
+
+### Create plugin files
+
+To create a plugin:
+
+1. Navigate to the WordPress plugins directory located in `/wp-content/plugins`
+2. Create a new folder with a unique name using lowercase letters and dashes such as `my-builder-modules`
+3. Create a PHP file within your new folder with the same name such as `my-builder-modules.php`
+4. Copy and paste the code below into your plugin's PHP file
+
+```php
+/**
+ * Plugin Name: My Custom Modules
+ * Plugin URI: http://www.mywebsite.com
+ * Description: Custom modules for the Beaver Builder Plugin.
+ * Version: 1.0
+ * Author: Your Name
+ * Author URI: http://www.mywebsite.com
+ */
+define( 'MY_MODULES_DIR', plugin_dir_path( __FILE__ ) );
+define( 'MY_MODULES_URL', plugins_url( '/', __FILE__ ) );
+
+function my_load_module_examples() {
+  if ( class_exists( 'FLBuilder' ) ) {
+      // Include your custom modules here.
+  }
+}
+add_action( 'init', 'my_load_module_examples' );
+```
+
+Now that you've created a plugin, you can activate it within the WordPress Admin Dashboard and move on to creating your custom module.
+
+## Module structure
+
+A custom module consists of several key files:
+
+- **Module class file** (`my-module.php`): Defines the module properties and settings
+- **Frontend template** (`includes/frontend.php`): The HTML output for the module
+- **Frontend CSS** (`includes/frontend.css.php`): Styles for the module
+- **Frontend JavaScript** (`includes/frontend.js.php`): Scripts for the module (optional)
+
+## Module properties
+
+When creating a module class, you'll define several key properties:
+
+```php
+class MyCustomModule extends FLBuilderModule {
+    public function __construct() {
+        parent::__construct(array(
+            'name'            => __( 'My Module', 'my-modules' ),
+            'description'     => __( 'A custom module.', 'my-modules' ),
+            'category'        => __( 'My Modules', 'my-modules' ),
+            'icon'            => 'button.svg',
+            'dir'             => MY_MODULES_DIR . 'my-module/',
+            'url'             => MY_MODULES_URL . 'my-module/',
+        ));
+    }
+}
+```
+
+## Module settings
+
+Define settings for your module using the `register_module()` method:
+
+```php
+FLBuilder::register_module( 'MyCustomModule', array(
+    'general' => array(
+        'title'    => __( 'General', 'my-modules' ),
+        'sections' => array(
+            'general' => array(
+                'title'  => '',
+                'fields' => array(
+                    'text_field' => array(
+                        'type'    => 'text',
+                        'label'   => __( 'Text Field', 'my-modules' ),
+                        'default' => '',
+                    ),
+                ),
+            ),
+        ),
+    ),
+));
+```
+
+## Available field types
+
+Beaver Builder provides many field types for module settings:
+
+- Text
+- Textarea
+- Editor (WYSIWYG)
+- Select
+- Color
+- Photo
+- Multiple Photos
+- Video
+- Number
+- Unit (with responsive support)
+- Typography
+- Border
+- Dimension
+- Alignment
+- And many more
+
+## Module output
+
+Create your module's HTML output in the `frontend.php` template file:
+
+```php
+<div class="my-module-wrapper">
+    <h2><?php echo $settings->text_field; ?></h2>
+</div>
+```
+
+Access module settings using the `$settings` object and module properties using `$module`.
+
+## Live preview
+
+Enable live preview for your module settings to see changes in real-time as you edit:
+
+```php
+'text_field' => array(
+    'type'    => 'text',
+    'label'   => __( 'Text Field', 'my-modules' ),
+    'preview' => array(
+        'type'     => 'text',
+        'selector' => '.my-module-wrapper h2',
+    ),
+),
+```
+
+## Best practices
+
+- Always sanitize and validate user input
+- Use translation functions for all user-facing text
+- Follow WordPress coding standards
+- Test your modules on different devices and browsers
+- Provide clear labels and help text for settings
+- Use appropriate field types for each setting
+- Implement responsive options where appropriate
+- Document your code for future reference

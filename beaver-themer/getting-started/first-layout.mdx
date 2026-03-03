@@ -1,0 +1,79 @@
+---
+title: I installed Beaver Themer, now what?
+description: Learn where to find Beaver Themer in your WordPress admin and how to create your first layout.
+---
+
+Let's take a quick tour of Beaver Themer and learn where to find it in your WordPress admin.
+
+## Where to find Beaver Themer
+
+Beaver Themer has been integrated with the Beaver Builder plugin, and you'll see it mainly in two places in the UI, as described in the following sections.
+
+### Beaver Builder menu in the WordPress admin panel
+
+There's a **Beaver Builder** admin panel nested in the WordPress admin panel, and when you install Beaver Themer, a new submenu appears called **Themer layouts**, as shown in the following screenshot.
+
+![Beaver Builder admin menu with Themer layouts](/img/i-installed-beaver-themer-now-what-84e9b397.png)
+
+<Tip>
+Can't see **Beaver Builder** in your WordPress admin panel? See the article about [how to enable it](/beaver-builder/troubleshooting/miscellaneous/cant-find-the-beaver-builder-menu-in-the-admin-panel).
+</Tip>
+
+### WordPress admin bar
+
+You'll also see Beaver Themer options in the WordPress admin bar at the top of the screen when you're logged in.
+
+#### New menu
+
+The **New** menu has a **Themer layout** selection, as shown in this screenshot.
+
+![New Themer layout in admin bar](/img/i-installed-beaver-themer-now-what-11c637e0.png)
+
+#### Edit Themer Layout and Beaver Builder in the admin bar
+
+When you're viewing a Themer layout, you'll see options to edit the Themer layout's settings or to open Beaver Builder to modify the Themer layout itself.
+
+![Edit Themer layout options](/img/i-installed-beaver-themer-now-what-c0fc0dc1.png)
+
+If there's already a Beaver Builder layout on the page you're viewing, Beaver Builder will appear with a green dot next to it in the WordPress admin bar. If the dot is gray or white, it means there's currently no Beaver Builder layout.
+
+If you're viewing a regular page and mouse over the Beaver Builder link, you'll see options to edit the page itself or any of the Themer layouts that apply to that page. For example, in the following screenshot you can choose to open either the page that you're viewing in Beaver Builder, or the Header-type Themer layout called "Sneak Peek home page," which is controlling the header on that page.
+
+![Edit page or Themer layout](/img/i-installed-beaver-themer-now-what-bf74dcc9.png)
+
+## Field connections
+
+When you open a module for editing in a Themer layout, you'll notice a plus sign next to some of the setting fields, as you can see in the following screenshot.
+
+![Field connection icon](/img/i-installed-beaver-themer-now-what-34d69222.png)
+
+These plus signs indicate that you can set [field connections](/beaver-themer/field-connections) to add information from your site's database. In the screenshot example above, the field connection was set to display the site title as the heading text and use the site's URL as the link. This means that whenever you change the title of your site or its URL in your WordPress settings, your site automatically reflects the new information.
+
+There are many types of field connections. For example, the following screenshot shows part of a Singular Themer layout, in which the featured image is displayed as the row background, and the title, date, and author's name come from the post that's being displayed, all by means of field connections. In other words, no matter which post the Themer layout appears on, it displays the content from that post.
+
+![Field connections in action](/img/i-installed-beaver-themer-now-what-f3cdb7e1.jpg)
+
+## Beaver Builder layouts vs. Themer layouts
+
+Beaver Themer lets you create layouts that apply outside the content area of a page or post. In particular, Singular layouts apply to post titles, post info, the featured image, and so on, but not to the post content area. For the post content, you can use standard Beaver Builder layouts or the WordPress editor.
+
+For example, the following screenshot shows a single post. In the WordPress admin bar you can see that the dot following Beaver Builder is white, indicating that the post content doesn't have a Beaver Builder layout. The submenu indicates that there's a Header-type Themer layout and a Singular-type Themer layout applied to this page.
+
+![Post with Themer layouts](/img/i-installed-beaver-themer-now-what-4073ffa6.jpg)
+
+If you want to use Beaver Builder to lay out the content of posts, make sure that Posts are enabled for editing, then navigate to any single post in the back end and open it in the Beaver Builder editor, the same way you'd edit a page layout.
+
+## What's next?
+
+Have a look at the layout types in Beaver Themer, their special modules, and where you can use them on your site:
+
+- [Headers](/beaver-themer/layout-types/headers)
+- [Footers](/beaver-themer/layout-types/footers)
+- [Singular](/beaver-themer/layout-types/singular) (for single posts)
+- [Archive](/beaver-themer/layout-types/archive)
+
+Find out the power of using [field connections](/beaver-themer/field-connections) and [field connection shortcodes](/beaver-themer/field-connections/basics), both in your Themer layouts and regular Beaver Builder layouts.
+
+Use [conditional logic](/beaver-themer/conditional-logic) to fine-tune the locations where your Themer layouts appear.
+
+If you're a developer, have a look at the articles on how to customize [field connections](/beaver-themer/developer/custom-fields) and [hooks and filters](/beaver-themer/developer/hooks-filters).

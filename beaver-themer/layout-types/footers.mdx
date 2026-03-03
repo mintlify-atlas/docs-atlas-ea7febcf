@@ -1,0 +1,48 @@
+---
+title: Footer layout type
+description: Learn how to create and customize footer layouts that replace your theme's default footer.
+---
+
+The Footer-type Themer layout in Beaver Themer overrides your theme's footer and footer widget area at the bottom of a page, as shown in the following diagram.
+
+![Diagram of a typical web page structure, highlighting the footer area](/img/themer-footer-layout-type-1abdc414.png)
+
+## Choose a Themer Footer layout template
+
+After you create a new Footer-type Themer layout and launch Beaver Builder, the initial layout contains the **Footer 1** layout template, shown in the following screenshot.
+
+![Screenshot of the default Themer Footer 1 layout template](/img/themer--layout-types-modules--footer-layout-type--1.png)
+
+There are several Themer Footer layout templates to choose from. Open the Content panel and click the **Templates** tab to view all available options. You can start with any template and modify or delete whatever you like.
+
+## Footer 1 template
+
+![Screenshot of Themer Footer 1 layout template with modules identified](/img/themer--layout-types-modules--footer-layout-type--3.png)
+
+### Layout
+
+- Two rows, one that resembles a footer widget area but uses a Beaver Builder layout instead, and one for what's normally thought of as the footer.
+
+### Modules
+
+In the first row:
+- The first column has a Heading module and three Icon modules.
+- The second column has a Heading module and a Text Editor module.
+- The third column has a Heading module and a Text Editor module.
+
+In the second row, the single column has a Text Editor module, which contains the copyright symbol plus two [field connection shortcodes](/beaver-themer/field-connections): one for the current year and the other for the site title. If you look on the **Text** tab of the Text Editor module, it has the following markup:
+
+```html
+<p style="text-align: center;">© [wpbb site:year format=Y] [wpbb site:title]. All Rights Reserved.</p>
+```
+
+## Footer layout settings
+
+The **Edit Themer layout** screen has the following settings for Footer layouts:
+
+- The locations on your site where the footer applies
+- Optional conditional logic rules
+
+<Tip>
+Use field connection shortcodes like `[wpbb site:year format=Y]` to dynamically display the current year in your copyright notice.
+</Tip>

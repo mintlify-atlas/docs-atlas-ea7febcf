@@ -1,0 +1,154 @@
+---
+title: Responsive editing
+description: Advanced responsive design techniques and responsive editing mode in Beaver Builder.
+---
+
+Beaver Builder provides powerful responsive editing features that allow you to create layouts that look great on all devices. This article covers advanced responsive design techniques and how to use the responsive editing mode.
+
+## Responsive editing mode
+
+Responsive Editing Mode allows you to preview and edit your layouts at different screen sizes directly within the Beaver Builder editor.
+
+### Access responsive editing mode
+
+<Steps>
+  <Step title="Open Tools Menu">
+    Click the down arrow in the Top Bar to open the Tools menu.
+  </Step>
+  <Step title="Select Responsive Editing">
+    Click **Responsive Editing**.
+  </Step>
+  <Step title="Choose device size">
+    The editor will switch to medium device view. Click the device icon in the top bar to cycle through Large, Medium, and Small device views.
+  </Step>
+  <Step title="Edit layout">
+    Make changes to your layout. Device-specific settings are available for many options.
+  </Step>
+  <Step title="Exit">
+    Click **Exit** to return to normal editing mode.
+  </Step>
+</Steps>
+
+<Tip>
+Use the keyboard shortcut `R` to quickly enter responsive editing mode and cycle through device sizes. Use `Shift + R` to cycle in reverse order.
+</Tip>
+
+## Device-specific settings
+
+Many settings in Beaver Builder include a responsive toggle that allows you to configure different values for each device size:
+
+### Available responsive settings
+
+- **Margins and padding**: Set different spacing for each device
+- **Font sizes**: Adjust typography for optimal readability on each device
+- **Background images**: Use different images for different screen sizes
+- **Visibility**: Show or hide elements on specific devices
+- **Column widths**: Control how columns behave at different breakpoints
+- **Alignment**: Change text and element alignment per device
+- **Border and shadow**: Adjust borders and shadows for each device
+
+### Using the responsive toggle
+
+When you see a responsive toggle icon next to a setting:
+
+1. Click the icon to enable device-specific settings
+2. Select the device size you want to configure
+3. Enter the value for that device
+4. Repeat for other device sizes as needed
+
+## Responsive breakpoints
+
+Beaver Builder uses three default breakpoints:
+
+- **Large**: 1200px and above (desktops)
+- **Medium**: 992px to 1199px (tablets in landscape)
+- **Small**: 768px and below (phones and tablets in portrait)
+
+You can customize these breakpoints in the Global Settings to match your design requirements.
+
+## Column stacking
+
+Columns automatically stack vertically on small devices. You can control this behavior:
+
+### Stacking order
+
+- **Default**: Columns stack left to right, top to bottom
+- **Reversed**: Use the reverse stacking order option in column settings
+- **Custom**: Set specific column widths for each device to control stacking
+
+### Prevent stacking
+
+To prevent columns from stacking on mobile:
+
+1. Open the column settings
+2. Go to the Advanced tab
+3. In the Responsive section, set custom widths for small devices
+4. Ensure the total width doesn't exceed 100%
+
+<Warning>
+Be cautious when preventing column stacking on mobile devices, as it can make content difficult to read on small screens.
+</Warning>
+
+## Visibility options
+
+Control which elements appear on different devices:
+
+<Steps>
+  <Step title="Open node settings">
+    Open the settings for a row, column, or module.
+  </Step>
+  <Step title="Go to Advanced tab">
+    Click the **Advanced** tab.
+  </Step>
+  <Step title="Find Visibility">
+    Scroll to the **Visibility** section.
+  </Step>
+  <Step title="Set visibility">
+    Choose which devices should display this element:
+    - Always (default)
+    - Large devices only
+    - Large & medium devices
+    - Medium devices only
+    - Medium & small devices
+    - Small devices only
+  </Step>
+</Steps>
+
+## Best practices
+
+### Mobile-first approach
+
+Consider designing for mobile first, then enhancing for larger screens:
+
+1. Start with the mobile layout
+2. Ensure content is readable and usable on small screens
+3. Add enhancements for medium and large screens
+4. Test on real devices when possible
+
+### Performance considerations
+
+- Use appropriate image sizes for each device
+- Leverage lazy loading for images
+- Minimize the use of large background images on mobile
+- Consider hiding decorative elements on small devices
+
+### Testing
+
+- Always preview layouts in responsive editing mode
+- Test on actual devices when possible
+- Check all breakpoints, not just the extremes
+- Verify that forms and interactive elements work on all devices
+- Test with different content lengths to ensure layouts remain flexible
+
+## Preview mode
+
+In addition to responsive editing mode, you can use Preview Mode to see your layout without the editing interface:
+
+1. Open the Tools menu
+2. Click **Preview Layout**
+3. Choose a device size to preview
+4. Click **Continue Editing** to return to the editor
+
+<Tip>
+Use the keyboard shortcut `P` to quickly toggle preview mode.
+</Tip>

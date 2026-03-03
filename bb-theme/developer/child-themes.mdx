@@ -1,0 +1,442 @@
+---
+title: Child themes
+description: Learn how to create, customize, and white label BB Theme child themes for client projects.
+---
+
+Child themes are the recommended way to customize BB Theme. They allow you to make modifications that won't be overwritten when the parent theme updates.
+
+## What is a child theme?
+
+A child theme is a theme that inherits functionality and styling from another theme (the parent theme). Child themes are the recommended way to modify an existing theme because:
+
+- Your customizations won't be lost when the parent theme updates
+- All customizations are kept in one location
+- You can easily disable customizations by switching themes
+- It follows WordPress best practices
+
+## Why use the BB Theme child theme?
+
+The Beaver Builder child theme is blank by design. Unlike some themes where there are various flashy child themes built on top of a framework theme, the Beaver Builder child theme that's available for download is intentionally minimal.
+
+**Why blank?**
+
+So that any code customizations you make (CSS, PHP, JavaScript) don't get overwritten by updated versions of the parent theme.
+
+<Tip>
+Even if you think you're not going to add any code customizations to your website, it's a best practice to install the child theme anyway. You never need to update it, and if you ever do want to add some code, it's going to be a lot easier than trying to install the child theme after you already have a working website.
+</Tip>
+
+## Download and install
+
+### Download the child theme
+
+Download the Beaver Builder child theme zip file from the [My Account](https://www.wpbeaverbuilder.com/my-account/) page.
+
+### Install the child theme
+
+<Steps>
+  <Step title="Install parent theme">
+    First, install and upload the BB Theme (parent theme). Don't activate it.
+  </Step>
+  
+  <Step title="Upload child theme">
+    Go to **Appearance > Themes > Add New > Upload Theme** and upload the child theme zip file.
+  </Step>
+  
+  <Step title="Activate child theme">
+    Activate the child theme (not the parent theme).
+  </Step>
+</Steps>
+
+<Note>
+The child theme requires the parent theme to be installed, but you should activate the child theme, not the parent.
+</Note>
+
+### Move existing customizations
+
+If you've already made customizations in the parent theme:
+
+<Steps>
+  <Step title="Export Customizer settings">
+    Go to **Customize > Export/Import** and export your settings.
+  </Step>
+  
+  <Step title="Activate child theme">
+    Switch to the child theme in **Appearance > Themes**.
+  </Step>
+  
+  <Step title="Import settings">
+    Go to **Customize > Export/Import** and import your exported settings.
+  </Step>
+</Steps>
+
+## Child theme structure
+
+The BB Theme child theme includes these files:
+
+```
+bb-theme-child/
+├── functions.php      # PHP customizations
+├── style.css         # CSS customizations and theme info
+├── screenshot.png    # Theme thumbnail image
+└── README.md        # Documentation
+```
+
+### functions.php
+
+This file is where you add custom PHP code:
+
+```php
+<?php
+/**
+ * BB Theme Child Theme functions and definitions
+ */
+
+// Enqueue parent and child theme styles
+function bb_theme_child_enqueue_styles() {
+  wp_enqueue_style('bb-theme-parent', get_template_directory_uri() . '/style.css');
+  wp_enqueue_style('bb-theme-child', get_stylesheet_directory_uri() . '/style.css', array('bb-theme-parent'));
+}
+add_action('wp_enqueue_scripts', 'bb_theme_child_enqueue_styles');
+```
+
+### style.css
+
+This file contains your custom CSS and theme information:
+
+```css
+/*
+Theme Name: BB Theme Child
+Theme URI: http://www.wpbeaverbuilder.com
+Version: 1.0
+Description: A child theme for the Beaver Builder Theme.
+Author: The Beaver Builder Team
+Author URI: http://www.wpbeaverbuilder.com
+Template: bb-theme
+*/
+
+/* Add your custom CSS below this line */
+```
+
+<Warning>
+Do not modify the `Template: bb-theme` line. This tells WordPress which parent theme to use.
+</Warning>
+
+## Adding customizations
+
+### Add custom CSS
+
+Add CSS to your child theme's `style.css` file:
+
+```css
+/* Custom header styles */
+.fl-page-header {
+  background-color: #333;
+}
+
+/* Custom button styles */
+.fl-button {
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Custom footer styles */
+.fl-page-footer {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+```
+
+### Add custom PHP
+
+Add functions to your child theme's `functions.php`:
+
+```php
+<?php
+/**
+ * Add custom footer text
+ */
+function my_custom_footer_text() {
+  echo '<p>© ' . date('Y') . ' My Company. All rights reserved.</p>';
+}
+add_action('fl_footer_col1_open', 'my_custom_footer_text');
+
+/**
+ * Customize excerpt length
+ */
+function my_excerpt_length($length) {
+  return 30;
+}
+add_filter('excerpt_length', 'my_excerpt_length');
+
+/**
+ * Remove WordPress version from head
+ */
+remove_action('wp_head', 'wp_generator');
+```
+
+### Override template files
+
+You can override any parent theme template:
+
+<Steps>
+  <Step title="Find parent template">
+    Locate the template file in `/wp-content/themes/bb-theme/`.
+  </Step>
+  
+  <Step title="Copy to child theme">
+    Copy the file to the same relative path in `/wp-content/themes/bb-theme-child/`.
+  </Step>
+  
+  <Step title="Modify the copy">
+    Edit the child theme version. It will be used instead of the parent template.
+  </Step>
+</Steps>
+
+**Example: Override header.php**
+
+1. Copy `/wp-content/themes/bb-theme/header.php`
+2. To `/wp-content/themes/bb-theme-child/header.php`
+3. Edit the child theme version
+
+### Enqueue custom scripts
+
+Add custom JavaScript by enqueuing it in `functions.php`:
+
+```php
+<?php
+/**
+ * Enqueue custom scripts
+ */
+function my_custom_scripts() {
+  wp_enqueue_script(
+    'my-custom-script',
+    get_stylesheet_directory_uri() . '/js/custom.js',
+    array('jquery'),
+    '1.0',
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'my_custom_scripts');
+```
+
+Then create `/bb-theme-child/js/custom.js` with your JavaScript code.
+
+## White labeling your child theme
+
+You can customize the child theme's branding for client projects.
+
+### Replace theme thumbnail
+
+<Steps>
+  <Step title="Create thumbnail">
+    Create a 1200x900px PNG image showcasing your theme design.
+  </Step>
+  
+  <Step title="Replace file">
+    Replace `/bb-theme-child/screenshot.png` with your image.
+  </Step>
+  
+  <Step title="Verify">
+    Check **Appearance > Themes** to see your new thumbnail.
+  </Step>
+</Steps>
+
+### Customize theme details
+
+Edit the header of `style.css`:
+
+```css
+/*
+Theme Name: Content Extraordinaire Child Theme
+Theme URI: http://www.example.com
+Version: 1.0
+Description: The extraordinary child theme we've developed just for you.
+Author: Content Extraordinaire Ltd.
+Author URI: http://www.example.com
+Template: bb-theme
+*/
+```
+
+<Warning>
+Never modify the `Template: bb-theme` line, as this would break the child theme.
+</Warning>
+
+These details appear when you click **Theme Details** in **Appearance > Themes**.
+
+### Rename child theme directory
+
+You can rename the child theme folder:
+
+<Steps>
+  <Step title="Rename directory">
+    Rename `/wp-content/themes/bb-theme-child/` to your custom name (e.g., `/wp-content/themes/client-theme/`).
+  </Step>
+  
+  <Step title="Reactivate theme">
+    Go to **Appearance > Themes** and activate the renamed child theme.
+  </Step>
+</Steps>
+
+### Customize footer credits
+
+By default, the footer says "Powered by Beaver Builder." You can customize or remove this:
+
+**Option 1: Use Customizer**
+
+Go to **Customize > Footer > Footer Layout** and add custom text to Column 1 or Column 2.
+
+**Option 2: Add custom code**
+
+Add to `functions.php`:
+
+```php
+<?php
+/**
+ * Custom footer credits
+ */
+function my_footer_credits() {
+  echo 'Site by <a href="http://example.com">Your Company</a>';
+}
+add_action('fl_footer_col1_open', 'my_footer_credits');
+```
+
+## Best practices
+
+### Keep it organized
+
+- Add comments to explain your customizations
+- Group related CSS rules together
+- Use consistent naming conventions
+- Create separate files for major features
+
+### Use child theme for
+
+- Custom CSS
+- Custom PHP functions
+- Template overrides
+- Custom scripts and styles
+- Theme configuration
+
+### Don't use child theme for
+
+- Customizer settings (use Export/Import)
+- Content (use WordPress admin)
+- Plugin-specific code (create a plugin)
+- Site-specific data
+
+### Performance tips
+
+- Minimize CSS and JavaScript
+- Only load scripts when needed
+- Optimize images (screenshot.png)
+- Remove unused code
+
+### Version control
+
+- Use Git for child theme development
+- Commit changes regularly
+- Tag releases
+- Document changes
+
+## Troubleshooting
+
+### Child theme not appearing
+
+- Ensure parent theme (bb-theme) is installed
+- Check that `Template: bb-theme` line is correct in `style.css`
+- Verify child theme is in `/wp-content/themes/` directory
+
+### Styles not applying
+
+- Check that `style.css` is properly enqueued in `functions.php`
+- Clear browser cache and WordPress cache
+- Verify CSS syntax is correct
+- Check that selectors are specific enough
+
+### PHP errors
+
+- Check for syntax errors in `functions.php`
+- Ensure opening `<?php` tag is present
+- Verify function names don't conflict
+- Enable WordPress debug mode to see errors
+
+### Templates not overriding
+
+- Ensure file path matches parent theme exactly
+- Check file permissions
+- Clear template cache
+- Verify parent template file name
+
+## Example customizations
+
+### Add custom logo above menu
+
+```php
+<?php
+function my_custom_logo() {
+  echo '<div class="my-custom-logo">';
+  echo '<img src="' . get_stylesheet_directory_uri() . '/images/logo.png" alt="Logo">';
+  echo '</div>';
+}
+add_action('fl_before_header', 'my_custom_logo');
+```
+
+### Add custom widget area
+
+```php
+<?php
+function my_custom_widget_area() {
+  register_sidebar(array(
+    'name' => 'Custom Widget Area',
+    'id' => 'custom-widget',
+    'before_widget' => '<div class="widget">',
+    'after_widget' => '</div>',
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>'
+  ));
+}
+add_action('widgets_init', 'my_custom_widget_area');
+```
+
+### Modify mobile breakpoint
+
+```php
+<?php
+function my_mobile_breakpoint() {
+  return 1024; // Change from default 768px
+}
+add_filter('fl_mobile_breakpoint', 'my_mobile_breakpoint');
+```
+
+## Resources
+
+### Documentation
+
+- [WordPress Child Theme Documentation](https://developer.wordpress.org/themes/advanced-topics/child-themes/)
+- [BB Theme Hooks Reference](/bb-theme/developer/hooks-filters)
+- [Customizer Settings](/bb-theme/customizer-settings)
+
+### Tools
+
+- [Child Theme Configurator Plugin](https://wordpress.org/plugins/child-theme-configurator/)
+- [Code Snippets Plugin](https://wordpress.org/plugins/code-snippets/)
+- [WordPress Theme Check Plugin](https://wordpress.org/plugins/theme-check/)
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Hooks & filters" icon="link" href="/bb-theme/developer/hooks-filters">
+    Complete reference for theme actions and filters
+  </Card>
+  <Card title="Install BB Theme" icon="download" href="/bb-theme/getting-started/install">
+    How to install parent and child themes
+  </Card>
+  <Card title="Export/Import settings" icon="file-export" href="/bb-theme/management-migration/export-or-import-customizer-settings">
+    Transfer Customizer settings between themes
+  </Card>
+  <Card title="Developer resources" icon="code" href="/bb-theme/developer">
+    All developer documentation and resources
+  </Card>
+</CardGroup>

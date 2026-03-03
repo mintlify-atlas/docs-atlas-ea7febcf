@@ -1,0 +1,187 @@
+---
+title: Hooks & filters
+description: Extend Beaver Builder functionality using WordPress hooks and filters.
+---
+
+Beaver Builder provides a comprehensive set of hooks and filters that allow developers to extend and customize the plugin's functionality without modifying core files.
+
+## What are hooks and filters?
+
+Hooks and filters are part of the WordPress plugin API that allows you to modify or add functionality to WordPress and plugins like Beaver Builder:
+
+- **Actions (Hooks)**: Allow you to execute custom code at specific points during execution
+- **Filters**: Allow you to modify data before it's used or displayed
+
+## Common Beaver Builder filters
+
+Here are some commonly used Beaver Builder filters:
+
+### Customize module output
+
+Modify the output of any module:
+
+```php
+add_filter( 'fl_builder_module_frontend_file', 'my_custom_module_template', 10, 2 );
+
+function my_custom_module_template( $file, $module ) {
+    if ( 'heading' === $module->slug ) {
+        return MY_PLUGIN_DIR . 'includes/heading-template.php';
+    }
+    return $file;
+}
+```
+
+### Modify module settings
+
+Filter module settings before they're registered:
+
+```php
+add_filter( 'fl_builder_register_settings_form', 'my_custom_module_settings', 10, 2 );
+
+function my_custom_module_settings( $form, $id ) {
+    if ( 'heading' === $id ) {
+        // Add or modify settings
+        $form['general']['sections']['general']['fields']['custom_field'] = array(
+            'type'  => 'text',
+            'label' => 'Custom Field',
+        );
+    }
+    return $form;
+}
+```
+
+### Customize CSS and JavaScript
+
+Control how CSS and JavaScript are loaded:
+
+```php
+add_filter( 'fl_builder_render_css', 'my_custom_css_output', 10, 3 );
+
+function my_custom_css_output( $css, $nodes, $global_settings ) {
+    // Add or modify CSS
+    return $css;
+}
+```
+
+### Modify breakpoints
+
+Customize responsive breakpoints:
+
+```php
+add_filter( 'fl_builder_breakpoints', 'my_custom_breakpoints' );
+
+function my_custom_breakpoints( $breakpoints ) {
+    $breakpoints->large  = 1400;
+    $breakpoints->medium = 1024;
+    $breakpoints->small  = 768;
+    return $breakpoints;
+}
+```
+
+## Common Beaver Builder actions
+
+Here are some commonly used Beaver Builder actions:
+
+### After layout render
+
+Execute code after a layout is rendered:
+
+```php
+add_action( 'fl_builder_after_render_layout', 'my_custom_function' );
+
+function my_custom_function() {
+    // Your custom code here
+}
+```
+
+### Before saving module
+
+Run code before a module is saved:
+
+```php
+add_action( 'fl_builder_before_save_module', 'my_before_save_module', 10, 2 );
+
+function my_before_save_module( $settings, $module ) {
+    // Modify settings or perform validation
+}
+```
+
+### After module registered
+
+Execute code after a module is registered:
+
+```php
+add_action( 'fl_builder_after_register_module', 'my_after_module_registered', 10, 2 );
+
+function my_after_module_registered( $class, $settings ) {
+    // Your custom code here
+}
+```
+
+## Useful filters
+
+### Disable notifications
+
+Disable notifications from Beaver Builder in the UI:
+
+```php
+add_filter( 'fl_disable_notifications', '__return_true' );
+```
+
+### Customize keyboard shortcuts
+
+Modify or add keyboard shortcuts:
+
+```php
+add_filter( 'fl_builder_keyboard_shortcuts', 'my_custom_shortcuts' );
+
+function my_custom_shortcuts( $shortcuts ) {
+    $shortcuts['saveModule'] = array(
+        'key'    => 'Ctrl+M',
+        'label'  => 'Save Module',
+    );
+    return $shortcuts;
+}
+```
+
+### Modify template categories
+
+Filter template categories:
+
+```php
+add_filter( 'fl_builder_template_categories', 'my_template_categories' );
+
+function my_template_categories( $categories ) {
+    $categories['my-category'] = __( 'My Templates', 'my-plugin' );
+    return $categories;
+}
+```
+
+## Finding available hooks
+
+To find all available hooks and filters in Beaver Builder:
+
+1. Search the Beaver Builder plugin files for `do_action()` and `apply_filters()`
+2. Review the Beaver Builder developer documentation
+3. Use a code reference plugin to discover hooks
+4. Check the Beaver Builder GitHub repository for examples
+
+## Best practices
+
+- Always use unique function names to avoid conflicts
+- Check if a function or class exists before using it
+- Use appropriate priority values (default is 10)
+- Document your hooks and filters for future reference
+- Test thoroughly after adding custom hooks
+- Use child themes or plugins, never modify core files
+- Follow WordPress coding standards
+
+## Resources
+
+- [WordPress Plugin API](https://developer.wordpress.org/plugins/hooks/)
+- [Beaver Builder Developer Documentation](https://hooks.wpbeaverbuilder.com/)
+- [Custom Module Developer Course](https://courses.wpbeaverbuilder.com/create-a-custom-beaver-builder-module)
+
+<Tip>
+For a comprehensive list of Beaver Builder hooks and filters, visit the [Beaver Builder Hooks Reference](https://hooks.wpbeaverbuilder.com/).
+</Tip>

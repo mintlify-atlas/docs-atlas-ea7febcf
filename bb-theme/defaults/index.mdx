@@ -1,0 +1,171 @@
+---
+title: Defaults for layouts, content, and styles
+description: Learn how BB Theme handles default settings for layouts, content areas, and styling across your WordPress site.
+---
+
+The BB Theme provides sensible defaults for layouts, content display, and styles that you can customize through the WordPress Customizer. Understanding these defaults will help you make the most of your theme customization.
+
+## Overview
+
+BB Theme defaults are organized into three main categories:
+
+<CardGroup cols={3}>
+  <Card title="Layout" icon="layout" href="/bb-theme/defaults/layout">
+    Full-width vs. boxed layouts, content width, and responsive behavior
+  </Card>
+  <Card title="Content" icon="file-lines" href="/bb-theme/defaults/content">
+    Headers, footers, sidebars, menus, and widgets
+  </Card>
+  <Card title="Styles" icon="palette" href="/bb-theme/defaults/styles">
+    Colors, typography, buttons, and links
+  </Card>
+</CardGroup>
+
+## Layout defaults
+
+BB Theme's layout system controls the overall structure of your pages:
+
+### Full-width vs. boxed
+
+By default, BB Theme uses a full-width layout where content can span edge to edge in the browser window. You can switch to a boxed layout where your page appears in a container with space around it.
+
+### Content width
+
+The default maximum content width for header and footer content is 1100 pixels. This ensures your content remains readable on large screens.
+
+### Responsive breakpoints
+
+Default breakpoints are:
+- Medium devices: 992px
+- Small devices: 768px
+
+These breakpoints control when your layout adapts for different screen sizes.
+
+[Learn more about layout defaults](/bb-theme/defaults/layout)
+
+## Content defaults
+
+Content defaults control how various page elements are displayed:
+
+### Headers and navigation
+
+- Default header layout: Nav Right
+- Top bar: Disabled by default
+- Fixed header: Disabled by default
+- Mobile menu: Hamburger icon on small devices
+
+### Footers
+
+- Footer widgets: Disabled by default
+- Main footer: Two columns available
+- Footer parallax: Disabled by default
+
+### Sidebars
+
+- Primary sidebar: Available for posts (not pages by default)
+- Position: Right side
+- Responsive behavior: Appears below content on small devices
+
+### Menus and navigation
+
+- Nav item spacing: Default spacing between menu items
+- Submenu indicators: Optional down arrows
+- Mobile toggle: Hamburger icon or MENU button
+
+[Learn more about content defaults](/bb-theme/defaults/content)
+
+## Style defaults
+
+Style defaults set the visual appearance of your site:
+
+### Colors
+
+- Accent color: Blue (#428bca)
+- Hover color: Blue (#428bca)
+- Text color: Medium grey (#808080)
+- Headings color: Dark grey (#333333)
+
+### Typography
+
+- Default font family: System fonts
+- Heading styles: H1-H6 with decreasing sizes
+- Line height: Optimized for readability
+- Letter spacing: Default browser spacing
+
+### Buttons
+
+- Style: Flat by default
+- Background color: Uses accent color
+- Text color: White
+- Border radius: Slightly rounded
+
+### Links
+
+- Link color: Uses accent color
+- Hover color: Darker shade of accent color
+- Underlines: None by default
+
+[Learn more about style defaults](/bb-theme/defaults/styles)
+
+## Customizing defaults
+
+All of these defaults can be customized through the WordPress Customizer:
+
+<Steps>
+  <Step title="Open the Customizer">
+    Go to **Appearance > Customize** in your WordPress admin panel.
+  </Step>
+  
+  <Step title="Choose a preset (optional)">
+    Select a preset from **Customize > Presets** to quickly apply a predefined color scheme and layout.
+  </Step>
+  
+  <Step title="Customize individual settings">
+    Navigate to the relevant tab (General, Header, Content, Footer) to customize specific settings.
+  </Step>
+  
+  <Step title="Preview and publish">
+    Use the live preview to see your changes, then click **Publish** to save them.
+  </Step>
+</Steps>
+
+## Templates for pages and posts
+
+BB Theme includes built-in templates that override defaults for specific pages:
+
+- **Default** - Standard page with header, footer, and content area
+- **No header/footer** - Content only (great for landing pages)
+- **Sidebar** - Adds the primary sidebar to pages (pages don't have sidebars by default)
+- **Full width** (posts only) - Removes post meta and sidebar
+
+You can select a template in the **Page Attributes** or **Post Attributes** panel when editing a page or post.
+
+## Presets
+
+BB Theme includes several presets that bundle layout and style defaults:
+
+- Default
+- Default Dark
+- Classic (boxed)
+- Modern (boxed)
+- Bold
+- Stripe
+- Deluxe
+- Premier
+- Dusk (boxed)
+- Midnight (boxed)
+
+<Warning>
+Changing a preset will overwrite many of your existing Customizer settings. Use presets as a starting point before making detailed customizations.
+</Warning>
+
+## Related resources
+
+<CardGroup cols={2}>
+  <Card title="Customizer settings" icon="sliders" href="/bb-theme/customizer-settings">
+    Complete guide to all Customizer options
+  </Card>
+  <Card title="Getting started" icon="rocket" href="/bb-theme/getting-started">
+    Installation and initial setup
+  </Card>
+</CardGroup>

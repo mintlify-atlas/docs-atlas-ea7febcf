@@ -1,0 +1,93 @@
+---
+title: Custom templates
+description: Learn how to create and customize templates for Beaver Builder layouts, including saved rows, columns, and modules.
+---
+
+Beaver Builder allows you to save and reuse layouts, rows, columns, and modules as templates. This feature helps you maintain consistency across your website and speed up your workflow.
+
+## Template types
+
+Beaver Builder supports several types of templates:
+
+<CardGroup cols={2}>
+  <Card title="Layout templates" icon="layout">
+    Complete page layouts that can be reused across multiple pages
+  </Card>
+  <Card title="Saved rows" icon="bars">
+    Individual row configurations with all modules and settings
+  </Card>
+  <Card title="Saved columns" icon="columns">
+    Column layouts with their content and styling
+  </Card>
+  <Card title="Saved modules" icon="cube">
+    Individual modules with pre-configured settings
+  </Card>
+</CardGroup>
+
+## Saving templates
+
+You can save any layout element as a template for reuse:
+
+<Steps>
+  <Step title="Select the element">
+    Click on the row, column, or module you want to save
+  </Step>
+  
+  <Step title="Access save option">
+    Click the wrench icon to open settings, then click **Save As**
+  </Step>
+  
+  <Step title="Name your template">
+    Give your template a descriptive name and click **Save**
+  </Step>
+</Steps>
+
+## Using saved templates
+
+To use a saved template in your layout:
+
+1. Open the **Content Panel** in the Beaver Builder editor
+2. Navigate to the **Saved** tab
+3. Drag your saved template onto the page
+
+<Tip>
+You can organize your saved templates into categories for easier management. This is especially useful for large websites with many templates.
+</Tip>
+
+## Template categories
+
+Create categories to organize your templates:
+
+- Navigate to **Settings > Beaver Builder > Templates**
+- Click **Add New Category**
+- Assign templates to categories when saving
+
+## Exporting and importing templates
+
+You can export templates from one site and import them to another:
+
+### Export templates
+
+1. Go to **Tools > Import/Export** in the Beaver Builder menu
+2. Select the templates you want to export
+3. Click **Export** to download the template file
+
+### Import templates
+
+1. Go to **Tools > Import/Export** in the Beaver Builder menu
+2. Click **Choose File** and select your template export file
+3. Click **Import** to add the templates to your site
+
+<Note>
+When importing templates, make sure all required plugins and modules are installed on the destination site to ensure proper functionality.
+</Note>
+
+## Developer resources
+
+For developers looking to create custom template experiences, you can hook into the template system:
+
+- Use the `fl_builder_register_settings_form` action to add custom template options
+- Filter templates with `fl_builder_get_templates`
+- Customize template rendering with `fl_builder_before_render_module`
+
+See the [Hooks and filters](/beaver-builder/developer/hooks-filters) documentation for more information on customizing template behavior.

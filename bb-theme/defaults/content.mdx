@@ -1,0 +1,289 @@
+---
+title: Content defaults
+description: Default settings for headers, footers, sidebars, menus, widgets, and other content elements in BB Theme.
+---
+
+BB Theme provides sensible defaults for all content areas of your site, from headers and navigation menus to footers and sidebars. Understanding these defaults helps you customize your site effectively.
+
+## Headers and navigation
+
+### Default header layout
+
+The BB Theme's header area includes three components:
+
+1. **Top bar** (optional) - Disabled by default
+2. **Main header area** - Contains logo/text
+3. **Navigation menu** - Position varies by layout choice
+
+![Header components](/img/customizer-settings-the-header-tab-66e65267.jpg)
+
+### Default header settings
+
+- **Layout**: Nav Right (menu to the right of logo)
+- **Top bar**: Disabled
+- **Fixed header**: Disabled
+- **Header background**: White
+- **Header text color**: Medium grey (#808080)
+- **Logo type**: Text (uses site title)
+
+### Navigation menu defaults
+
+- **Nav item spacing**: Default spacing
+- **Search icon**: Disabled
+- **Mobile toggle**: Hamburger icon
+- **Responsive breakpoint**: Small devices only (768px)
+- **Submenu indicator**: Disabled
+
+### Header layouts available
+
+BB Theme offers multiple header layout options:
+
+- **None** - No header displayed initially (can fade in on scroll)
+- **Nav Right** - Menu items to the right of logo
+- **Nav Left** - Menu items to the left of logo
+- **Nav Centered** - Menu below centered logo
+- **Nav Bottom** - Menu below left-aligned logo
+- **Nav Centered + Inline Logo** - Logo centered with menu items on both sides
+- **Nav Vertical Left** - Vertical sidebar navigation on left
+- **Nav Vertical Right** - Vertical sidebar navigation on right
+
+### Menu locations
+
+BB Theme provides menu locations for:
+
+- **Primary menu** - Main navigation in header
+- **Footer menu** - Optional menu in footer
+
+Create and assign menus at **Customize > Menus**.
+
+## Footers
+
+### Footer structure
+
+BB Theme supports two footer sections:
+
+1. **Footer widgets area** (optional) - Up to 4 widget columns
+2. **Main footer** - Up to 2 content columns
+
+### Default footer settings
+
+- **Footer widgets**: Disabled by default
+- **Main footer**: Two columns available
+- **Footer background**: White
+- **Footer text color**: Medium grey (#808080)
+- **Footer parallax**: Disabled
+
+### Footer content options
+
+Each footer column can contain:
+
+- Text (supports HTML and shortcodes)
+- Social icons
+- WordPress menu
+- Combination of text and social icons
+
+<Tip>
+Use the `[fl_year]` shortcode to automatically display the current year in your footer copyright text.
+</Tip>
+
+## Sidebars
+
+### Primary sidebar
+
+BB Theme includes one sidebar location called "Primary."
+
+### Default sidebar settings
+
+- **Position**: Right side
+- **Display on posts**: Yes (by default)
+- **Display on pages**: No (by default)
+- **Width**: Proportional to content width
+- **Mobile behavior**: Appears below content
+
+### Controlling sidebar display
+
+You can control sidebar display:
+
+**Globally** in **Customize > Content > Blog layout**:
+- Enable or disable for posts
+- Set position (left, right, none)
+- Configure width and responsive behavior
+
+**Per page/post** using the **Template** field:
+- Pages: Choose "Sidebar" template to show sidebar
+- Posts: Choose "Full width" template to hide sidebar
+
+### Sidebar widgets
+
+Add widgets to your sidebar at **Appearance > Widgets** in the WordPress admin panel.
+
+## Blog and post defaults
+
+### Blog layout
+
+- **Sidebar**: Enabled by default for posts
+- **Post meta**: Author, date, and comment count shown
+- **Featured image**: Displayed by default
+
+### Archive layout
+
+- **Display**: Full post content (not excerpt)
+- **Read More text**: "Continue Reading..."
+- **Featured image**: Above title
+- **Image size**: Medium
+
+### Post layout
+
+- **Featured image**: Above title
+- **Image size**: Large
+- **Categories**: Shown
+- **Tags**: Shown
+- **Previous/Next navigation**: Shown
+- **Author box**: Disabled by default
+
+## Widgets
+
+BB Theme provides several widget areas:
+
+### Widget locations
+
+1. **Primary sidebar** - Right sidebar (posts)
+2. **Footer Column 1** - First footer widget column
+3. **Footer Column 2** - Second footer widget column
+4. **Footer Column 3** - Third footer widget column
+5. **Footer Column 4** - Fourth footer widget column
+
+### Footer widget settings
+
+- **Layout**: Disabled by default
+- **Number of columns**: 1-4 columns available
+- **Background**: Customizable color or image
+- **Text color**: Customizable
+
+Configure widgets at **Appearance > Widgets** or **Customize > Widgets**.
+
+## Social icons
+
+### Social links configuration
+
+Configure social icons at **Customize > General > Social Links**:
+
+- Enter URLs for each social platform
+- Choose monochrome or branded colors
+
+### Where social icons can appear
+
+Social icons can be displayed in:
+
+1. **Top bar** - Column 1 or Column 2
+2. **Header** - Nav Bottom layout content area
+3. **Footer** - Column 1 or Column 2
+
+### Supported social platforms
+
+BB Theme supports icons for:
+
+- Facebook
+- Twitter
+- Instagram
+- LinkedIn
+- YouTube
+- Pinterest
+- And many more...
+
+## Font Awesome icons
+
+### Default loading behavior
+
+BB Theme can load Font Awesome icons in three ways:
+
+- **Auto-detect** (default) - Load only when needed
+- **Always load** - Load on every page
+- **Font Awesome 4 compatibility** - Convert FA4 icons to FA5
+
+Configure at **Customize > General > Layout > Font Awesome icons**.
+
+## Templates for pages and posts
+
+BB Theme adds template options to the WordPress **Template** field:
+
+### Page templates
+
+- **Default** - Standard page layout with header and footer, no sidebar
+- **No header/footer** - Content only (great for landing pages)
+- **Sidebar** - Adds primary sidebar to the page
+
+### Post templates
+
+- **Default** - Standard post with all post elements
+- **Full width** - Removes sidebar and post meta
+- **No header/footer** - Content only
+
+<Note>
+Template selection appears in the **Page Attributes** panel (for pages) or **Post Attributes** panel (for posts) when editing.
+</Note>
+
+## WooCommerce integration
+
+If you have WooCommerce installed, BB Theme provides defaults:
+
+### WooCommerce settings
+
+- **Sidebar**: Disabled by default
+- **Product columns**: 4 columns per row
+- **Product gallery**: Enabled
+- **Add to Cart button**: Shown on category pages
+- **Custom styling**: BB Theme styles enabled
+
+Configure at **Customize > Content > WooCommerce layout**.
+
+## Lightbox
+
+### Image lightbox
+
+- **Status**: Enabled by default
+- **Applies to**: Images in text areas (WordPress and Beaver Builder)
+- **Features**: Navigation arrows when multiple images exist
+
+Configure at **Customize > Content > Lightbox**.
+
+![Lightbox example](/img/customizer-settings-the-content-tab-fcf07892.gif)
+
+## Customizing content defaults
+
+All content defaults can be customized:
+
+<Steps>
+  <Step title="Access the Customizer">
+    Go to **Appearance > Customize** in WordPress admin.
+  </Step>
+  
+  <Step title="Navigate to relevant tab">
+    Choose Header, Content, or Footer tab based on what you want to customize.
+  </Step>
+  
+  <Step title="Adjust settings">
+    Make your changes and preview them in real-time.
+  </Step>
+  
+  <Step title="Publish changes">
+    Click **Publish** to save your customizations.
+  </Step>
+</Steps>
+
+## Related resources
+
+<CardGroup cols={2}>
+  <Card title="Header settings" icon="header" href="/bb-theme/customizer-settings/header">
+    Complete header customization options
+  </Card>
+  <Card title="Content settings" icon="file-lines" href="/bb-theme/customizer-settings/content">
+    Blog, archive, and post configuration
+  </Card>
+  <Card title="Footer settings" icon="footer" href="/bb-theme/customizer-settings/footer">
+    Footer widgets and layout options
+  </Card>
+  <Card title="General settings" icon="sliders" href="/bb-theme/customizer-settings/general">
+    Social links and other options
+  </Card>
+</CardGroup>

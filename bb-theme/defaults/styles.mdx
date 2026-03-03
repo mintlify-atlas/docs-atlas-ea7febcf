@@ -1,0 +1,330 @@
+---
+title: Style defaults
+description: Default colors, typography, buttons, links, and other styling options in BB Theme.
+---
+
+BB Theme provides comprehensive default styles that you can customize through the WordPress Customizer. These styles serve as the foundation for your site's visual appearance and can be overridden at the module level in Beaver Builder.
+
+## Colors
+
+### Default color scheme
+
+The default BB Theme color scheme uses:
+
+- **Accent color**: Blue (#428bca)
+- **Hover color**: Blue (#428bca)
+- **Text color**: Medium grey (#808080)
+- **Headings color**: Dark grey (#333333)
+- **Background**: White (#ffffff)
+
+### Accent and hover colors
+
+The accent color is used throughout your site for:
+
+- Links in content
+- Button backgrounds
+- Icons
+- Form elements
+- Other interactive elements
+
+The hover color applies when users hover over:
+
+- Links
+- Buttons
+- Menu items
+- Other interactive elements
+
+### Background colors
+
+You can set background colors for:
+
+**Browser window**
+- Set at **Customize > General > Background**
+- Visible around boxed layouts or as page background
+
+**Content area**
+- Set at **Customize > Content > Content background**
+- Fills area between header and footer
+
+**Header areas**
+- Top bar background
+- Header logo area background
+- Navigation menu background
+
+**Footer areas**
+- Footer widgets background
+- Main footer background
+
+### Menu colors
+
+Menu colors come from different sources depending on header layout:
+
+**Nav Right, Nav Left, Nav Centered + Inline Logo**
+- Menu inherits header logo area colors
+- Set at **Customize > Header > Header style**
+
+**Nav Bottom, Nav Centered**
+- Menu has separate color settings
+- Set at **Customize > Header > Nav style**
+
+## Typography
+
+BB Theme provides extensive typography controls with responsive settings.
+
+### Headings
+
+You can set default styles for headings (H1-H6) at **Customize > General > Headings**.
+
+**Available settings per heading level:**
+
+- Font family
+- Font weight (100-900)
+- Font format (uppercase, lowercase, capitalize, none)
+- Font size (responsive - different sizes for large, medium, small devices)
+- Line height
+- Letter spacing
+- Color
+
+**Default heading sizes:**
+
+- H1: 36px
+- H2: 30px
+- H3: 24px
+- H4: 18px
+- H5: 14px
+- H6: 12px
+
+<Note>
+Heading styles set in the Customizer serve as defaults for the Beaver Builder plugin, Beaver Themer, and WordPress block editor.
+</Note>
+
+### Body text
+
+You can set default styles for body text at **Customize > General > Text**.
+
+**Available settings:**
+
+- Font family
+- Font weight
+- Font format
+- Font size (responsive)
+- Line height
+- Color
+
+**Default text settings:**
+
+- Font size: 16px
+- Line height: 1.6
+- Color: Medium grey (#808080)
+
+### System fonts
+
+BB Theme includes a "System UI" font family option that uses the operating system's default font:
+
+- **macOS/iOS**: San Francisco
+- **Windows**: Segoe UI
+- **Android**: Roboto
+- **Linux**: System default
+
+This option provides fast loading and native look-and-feel.
+
+### Web fonts
+
+BB Theme supports:
+
+- **Google Fonts** - Available in font family dropdowns
+- **Adobe Fonts** - Can be loaded and used
+- **Custom web fonts** - Can be added via code
+
+Font files are loaded automatically when you select them in the Customizer.
+
+### Responsive typography
+
+Many typography settings support responsive configuration:
+
+<Steps>
+  <Step title="Set desktop size">
+    Enter the font size for large devices (default view).
+  </Step>
+  
+  <Step title="Set medium size">
+    Click the tablet icon and enter font size for medium devices.
+  </Step>
+  
+  <Step title="Set mobile size">
+    Click the mobile icon and enter font size for small devices.
+  </Step>
+</Steps>
+
+This ensures optimal readability across all device sizes.
+
+## Buttons
+
+BB Theme allows you to set global button styles at **Customize > General > Buttons**.
+
+### Default button settings
+
+- **Style**: Flat
+- **Background color**: Accent color
+- **Background hover color**: Hover color
+- **Text color**: White
+- **Text hover color**: White
+- **Border**: None
+- **Border radius**: 4px
+
+### Button style options
+
+**Style**
+- Flat - Solid color
+- Gradient - Color gradient
+- Transparent - See-through with border
+
+**Colors**
+- Background color
+- Background hover color
+- Text color
+- Text hover color
+- Border color (for transparent style)
+- Border hover color
+
+**Dimensions**
+- Border width (0-10px)
+- Border radius (0-100px for rounded corners)
+
+<Note>
+Global button styles apply to Button modules, Callout modules, and other button elements in the Beaver Builder editor. You can override these settings in individual modules.
+</Note>
+
+## Links
+
+### Default link styles
+
+Links use the accent color by default:
+
+- **Link color**: Accent color (#428bca)
+- **Hover color**: Hover color (#428bca)
+- **Underline**: None (by default)
+
+### Link locations
+
+Link styles apply to:
+
+- Content area links
+- Widget links
+- Footer links
+- Navigation menu links (uses specific menu colors)
+
+### Adding link underlines
+
+By default, links don't have underlines. You can add them with custom CSS:
+
+```css
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+```
+
+Add this code at **Customize > Additional CSS**.
+
+## CSS variables
+
+BB Theme generates CSS variables for many style settings, making it easier to maintain consistency:
+
+```css
+--fl-accent-color: #428bca;
+--fl-accent-hover-color: #428bca;
+--fl-body-font-family: sans-serif;
+--fl-heading-font-family: sans-serif;
+```
+
+You can reference these variables in custom CSS.
+
+## Presets
+
+BB Theme includes style presets that bundle color and typography settings:
+
+### Available presets
+
+- **Default** - Blue accent, full-width, light backgrounds
+- **Default Dark** - Lime green accent, dark header/footer
+- **Classic** - Purple accent, boxed layout
+- **Modern** - Orange accent, boxed with dark elements
+- **Bold** - Teal accents throughout
+- **Stripe** - Navy blue nav and footer
+- **Deluxe** - Blue-grey with layered backgrounds
+- **Premier** - Green accent with dark backgrounds
+- **Dusk** - Reddish brown accent, dark theme
+- **Midnight** - Blue accent, all dark theme
+
+<Warning>
+Applying a preset will overwrite your existing color and some layout settings. Use presets as a starting point, then customize as needed.
+</Warning>
+
+## Customizing styles
+
+All style defaults can be customized through the Customizer:
+
+<Steps>
+  <Step title="Choose a preset (optional)">
+    Start with a preset at **Customize > Presets** for a quick foundation.
+  </Step>
+  
+  <Step title="Customize colors">
+    Adjust accent colors, backgrounds, and text colors at **Customize > General**.
+  </Step>
+  
+  <Step title="Set typography">
+    Configure heading and text styles at **Customize > General > Headings** and **Text**.
+  </Step>
+  
+  <Step title="Configure buttons">
+    Set global button styles at **Customize > General > Buttons**.
+  </Step>
+  
+  <Step title="Add custom CSS">
+    Fine-tune with custom CSS at **Customize > Additional CSS**.
+  </Step>
+</Steps>
+
+## Best practices
+
+### Color contrast
+
+- Ensure sufficient contrast between text and backgrounds (WCAG AA: 4.5:1 minimum)
+- Test your color combinations with accessibility tools
+- Use darker text on light backgrounds and vice versa
+
+### Typography
+
+- Limit font families to 2-3 per site (one for headings, one for body)
+- Use web-safe fallback fonts
+- Set responsive font sizes for better mobile experience
+- Maintain readable line height (1.4-1.8 for body text)
+
+### Buttons
+
+- Make buttons visually distinct from regular links
+- Ensure adequate padding and click area (minimum 44x44px)
+- Use consistent button styling throughout your site
+- Provide clear hover states
+
+## Related resources
+
+<CardGroup cols={2}>
+  <Card title="General settings" icon="sliders" href="/bb-theme/customizer-settings/general">
+    Complete color and typography options
+  </Card>
+  <Card title="Header styles" icon="header" href="/bb-theme/customizer-settings/header">
+    Header-specific color and font settings
+  </Card>
+  <Card title="Content styles" icon="file-lines" href="/bb-theme/customizer-settings/content">
+    Content area background and settings
+  </Card>
+  <Card title="Footer styles" icon="footer" href="/bb-theme/customizer-settings/footer">
+    Footer color and background options
+  </Card>
+</CardGroup>

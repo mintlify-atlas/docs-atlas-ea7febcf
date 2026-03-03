@@ -1,0 +1,52 @@
+---
+title: Layouts
+description: Learn how to create complex page layouts using rows, columns, modules, and templates in Beaver Builder.
+---
+
+Beaver Builder layouts are created using a combination of rows, columns, modules, and templates. This section covers everything you need to know about building and customizing layouts.
+
+## Layout components
+
+<CardGroup cols={2}>
+  <Card title="Rows" icon="grip-lines" href="/beaver-builder/layouts/rows">
+    Create row structures for your layouts
+  </Card>
+  <Card title="Columns" icon="columns-3" href="/beaver-builder/layouts/columns">
+    Organize content in column layouts
+  </Card>
+  <Card title="Modules" icon="cube" href="/beaver-builder/layouts/modules">
+    Add content modules to your pages
+  </Card>
+  <Card title="Templates" icon="file-lines" href="/beaver-builder/layouts/templates">
+    Use prebuilt and saved templates
+  </Card>
+</CardGroup>
+
+## How layouts work
+
+When you drag content modules from the Content panel to the layout, the rows and columns are automatically created. As your layouts become more complex, with child columns, sometimes it's easier to drag in row layouts first, then drag content modules into them.
+
+For example, here is a single row with three column groups, which can be thought of as rows within rows.
+
+### Basic structure
+
+The basic structure of a Beaver Builder layout is:
+
+```
+Row
+  └─ Column Group
+      └─ Column
+          └─ Module
+```
+
+You can have:
+- Multiple column groups in a row
+- Multiple columns in a column group
+- Multiple modules in a column
+- Child columns within columns
+
+## Responsive behavior
+
+Beaver Builder makes layouts look good on medium devices (tablets) and small devices (mobile) with no extra effort on your part. You can check the layout and tweak settings at each device size by entering Responsive Editing Mode inside your layout.
+
+For more information about responsive editing settings, see the [Responsive Design](/beaver-builder/layouts/responsive-design) section.

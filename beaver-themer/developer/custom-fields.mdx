@@ -1,0 +1,267 @@
+---
+title: Customize field connections
+description: Learn how to add custom field connections, create settings forms, and add support for Beaver Themer in your theme.
+---
+
+There are several ways to customize field connections:
+
+- Add custom connections to the field connections menu
+- Create a custom settings form for field connections
+- Add a new group to organize field connections displayed in the connections menu
+- Add support for field connections to your module fields
+
+## Add new connections
+
+You can use the APIs to add custom connections to the field connections menu in order to connect any kind of data you want.
+
+There are three main methods for adding new connections:
+
+- `FLPageData::add_post_property( $key, $config )` - Adds a connection related to posts
+- `FLPageData::add_archive_property( $key, $config )` - Adds a connection related to archives
+- `FLPageData::add_site_property( $key, $config )` - Adds a connection related to the site
+
+Use these methods to add your connections within the `fl_page_data_add_properties` action. Each method accepts a key for your connection and a config array.
+
+<Warning>
+Be sure to namespace the key for your connection in order to avoid possible collisions with other custom connections. For example, if your connection is called Post Title, the key should be `my_namespace_post_title`, where `my_namespace` is your custom namespace.
+</Warning>
+
+The following code example shows the method `FLPageData::add_post_property()` used within the `fl_page_data_add_properties` action.
+
+```php
+add_action( 'fl_page_data_add_properties', function() {
+
+	FLPageData::add_post_property( 'my_connection', array(
+		'label'   => 'My Connection',
+		'group'   => 'general',
+		'type'    => 'string',
+		'getter'  => 'my_connection_getter',
+	) );
+} );
+
+function my_connection_getter() {
+	return 'My text';
+}
+```
+
+The config array accepts the following properties:
+
+### label (required)
+
+The label for your connection that will show in the menu.
+
+### group (required)
+
+The group you want your connection to appear in. Currently, the following groups are built in (array key values in parentheses):
+
+- General (`general`)
+- Archives (`archives`)
+- Posts (`posts`)
+- Comments (`comments`)
+- Author (`author`)
+- User (`user`)
+- Site (`site`)
+- Advanced (`advanced`)
+- Advanced Custom Fields (`acf`)
+- BigCommerce (`bigcommerce`)
+- Easy Digital Downloads (`edd`)
+- The Events Calendar (`the-events-calendar`)
+- WooCommerce (`woocommerce`)
+
+See the section below to add custom groups.
+
+### type (required)
+
+The type of connection. Use this when you connect a field to indicate what type of connections are available. For example, when you add a text field to a settings form, you can indicate that all of the string and HTML-based connections are available.
+
+You can set the type to anything you want. However, we recommend that you stick with the built-in connection types if you want your connections to appear in built-in modules. Currently, the following connection types are built in:
+
+- color
+- string
+- html
+- photo
+- multiple-photos
+- url
+- custom_field
+
+### getter (required)
+
+A reference to a function or class method that is used to retrieve the data for your connection.
+
+## Add a settings form
+
+Creating custom forms for field connections is very similar to creating custom modules. There are three main methods for adding settings, the choice of which depends on the type of connection:
+
+- `FLPageData::add_post_property_settings_fields( $key, $config )` - Adds settings to a post connection
+- `FLPageData::add_archive_property_settings_fields( $key, $config )` - Adds settings to a archive connection
+- `FLPageData::add_site_property_settings_fields( $key, $config )` - Adds settings to a site connection
+
+Each method accepts a key for your form and a config array.
+
+<Warning>
+Be sure to namespace the key for your form in order to avoid possible collisions with other forms. For example, if your form is for the post title, the key should be `my_namespace_post_title_form`, where `my_namespace` is your custom namespace.
+</Warning>
+
+The following code example shows the use of the method that adds settings to a post connection.
+
+```php
+FLPageData::add_post_property_settings_fields( 'my_connection', array(
+	'css'    => 'https://www.mysite.com/path-to-settings.css',
+	'js'     => 'https://www.mysite.com/path-to-settings.js',
+	'my_setting' => array(
+		'type'          => 'text',
+		'label'         => 'My Setting'
+	)
+) );
+```
+
+The config array for adding settings should have field config as discussed in the custom module documentation. It can also have a `css` and `js` property for defining CSS and JavaScript files that should be loaded along with your settings.
+
+## Adding custom groups
+
+You can add a group to the list of field connections. In the following screenshot, **Posts**, **Author**, and **User** are groups that organize the field connections.
+
+![Field connection groups](/img/beaver-themer/developer--field-connection-api--1.jpg)
+
+To add a new group, use the `FLPageData::add_group( $key, $config )` method, as shown in the following example:
+
+```php
+FLPageData::add_group( 'my_group', array(
+	'label' => 'My Group'
+) );
+```
+
+## Connect module fields
+
+You can add support for field connections to your module fields by defining what kind of connections they should support. Use the `connections` property in the field config. The following code example shows how you would add support for all connections registered as strings:
+
+```php
+'text' => array(
+	'type'          => 'text',
+	'label'         => 'My Text Field',
+	'connections'   => array( 'string' )
+)
+```
+
+You can support multiple connection types:
+
+```php
+'text' => array(
+	'type'          => 'text',
+	'label'         => 'My Text Field',
+	'connections'   => array( 'string', 'html', 'url' )
+)
+```
+
+See the type section above for the list of built-in field types.
+
+You can simply declare support for connections in your field config, and the rest is taken care of. In your module's `frontend.php` file, you can access all of your settings on the `$settings` object, just as you normally would, whether they are connected or not. For example, if your setting key is `text`, you would still access it like this:
+
+```php
+<?php
+
+echo $settings->text;
+```
+
+## Add theme support
+
+Most themes support Archive, Singular, and 404 layout types out of the box. However, to support the Header, Footer, and Part layout types, the theme must allow its header, footer, and parts to be removed using hooks.
+
+### Add header and footer support
+
+There are other ways than using hooks to remove the theme's headers and footers, but using hooks is the easiest and cleanest. For example, in Genesis you can remove the header with the following code:
+
+```php
+remove_action( 'genesis_header', 'genesis_do_header' );
+```
+
+If your theme's header and footer can be removed with hooks, the first step to providing support for Beaver Themer is by declaring it on the `after_setup_theme` action in your `functions.php` file:
+
+```php
+add_action( 'after_setup_theme', 'my_theme_header_footer_support' );
+
+function my_theme_header_footer_support() {
+  add_theme_support( 'fl-theme-builder-headers' );
+  add_theme_support( 'fl-theme-builder-footers' );
+}
+```
+
+The next step varies from theme to theme, but the general idea is to check to see if a header or footer exists for the current page. If it does, remove the theme's default header or footer and add an action to render the header or footer built by Beaver Themer. Here's what the code looks like to do that for Genesis:
+
+```php
+add_action( 'wp', 'my_theme_header_footer_render' );
+
+function my_theme_header_footer_render() {
+  // Get the header ID.
+  $header_ids = FLThemeBuilderLayoutData::get_current_page_header_ids();
+
+  // If we have a header, remove the theme header and hook in Beaver Themer'
+  if ( ! empty( $header_ids ) ) {
+    remove_action( 'genesis_header', 'genesis_do_header' );
+    add_action( 'genesis_header', 'FLThemeBuilderLayoutRenderer::render_header' );
+  }
+
+  // Get the footer ID.
+  $footer_ids = FLThemeBuilderLayoutData::get_current_page_footer_ids();
+
+  // If we have a footer, remove the theme footer and hook in Beaver Themer.
+  if ( ! empty( $footer_ids ) ) {
+    remove_action( 'genesis_footer', 'genesis_do_footer' );
+    add_action( 'genesis_footer', 'FLThemeBuilderLayoutRenderer::render_footer' );
+  }
+}
+```
+
+<Tip>
+If you're interested in an object-oriented approach to theme support, check out how we implemented Genesis support in the `extensions/themes/class-fl-theme-builder-support-genesis.php` file.
+</Tip>
+
+### Add parts support
+
+Theme parts are references to actions in your theme that a layout can be hooked into. For example, if your theme has a `before_header` action, you can register that so Part layout types can be rendered there.
+
+Adding support for part layout types is basically the same as adding support for headers and footers layout types. In fact, you can declare support for headers, footers, and parts at the same time:
+
+```php
+add_action( 'after_setup_theme', 'my_theme_header_footer_support' );
+
+function my_theme_header_footer_support() {
+  add_theme_support( 'fl-theme-builder-headers' );
+  add_theme_support( 'fl-theme-builder-footers' );
+  add_theme_support( 'fl-theme-builder-parts' );
+}
+```
+
+After you've declared support for parts, you can use the `fl_theme_builder_part_hooks` filter to register your parts. The function for your filter should return an array of arrays for each group of parts, as shown below. Within the hooks array, set your actions to the array key, and set the human-readable label to the array value.
+
+Here's an example of what that would look like for Genesis:
+
+```php
+add_filter( 'fl_theme_builder_part_hooks', 'my_theme_register_part_hooks' );
+
+function my_theme_register_part_hooks() {
+  return array(
+    array(
+      'label' => 'Header',
+      'hooks' => array(
+        'genesis_before_header' => 'Before Header',
+        'genesis_after_header'  => 'After Header',
+      )
+    ),
+    array(
+      'label' => 'Content',
+      'hooks' => array(
+        'genesis_before_content' => 'Before Content',
+        'genesis_after_content'  => 'After Content',
+      )
+    ),
+    array(
+      'label' => 'Footer',
+      'hooks' => array(
+        'genesis_before_footer' => 'Before Footer',
+        'genesis_after_footer'  => 'After Footer',
+      )
+    )
+  );
+}
+```

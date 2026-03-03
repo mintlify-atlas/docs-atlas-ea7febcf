@@ -1,0 +1,312 @@
+---
+title: Developer resources
+description: Hooks, filters, child themes, and advanced customization options for BB Theme developers.
+---
+
+BB Theme is built with developers in mind, providing extensive hooks, filters, and customization options. Whether you're building custom functionality or creating a child theme, these resources will help you extend BB Theme.
+
+## Developer tools
+
+<CardGroup cols={2}>
+  <Card title="Child themes" icon="code-branch" href="/bb-theme/developer/child-themes">
+    Learn how to create and customize child themes
+  </Card>
+  <Card title="Hooks & filters" icon="link" href="/bb-theme/developer/hooks-filters">
+    Complete reference for theme actions and filters
+  </Card>
+</CardGroup>
+
+## Quick start for developers
+
+<Steps>
+  <Step title="Install the child theme">
+    Download and install the Beaver Builder child theme from your account.
+  </Step>
+  
+  <Step title="Activate the child theme">
+    Activate the child theme (not the parent) in **Appearance > Themes**.
+  </Step>
+  
+  <Step title="Add your customizations">
+    Add custom CSS to `style.css`, PHP code to `functions.php`, or create custom template files.
+  </Step>
+</Steps>
+
+## Child themes
+
+Child themes are the recommended way to customize BB Theme without losing changes when the parent theme updates.
+
+### Why use a child theme?
+
+- **Update-safe** - Your customizations won't be overwritten
+- **Organized** - Keep all customizations in one place
+- **Reversible** - Easy to disable or remove customizations
+- **Professional** - Follow WordPress best practices
+
+### What you can customize
+
+- Add custom CSS in `style.css`
+- Add custom PHP in `functions.php`
+- Override parent theme templates
+- Enqueue custom scripts and styles
+- Register custom post types and taxonomies
+- Add theme support for various features
+
+[Learn more about child themes](/bb-theme/developer/child-themes)
+
+## Hooks and filters
+
+BB Theme provides numerous hooks and filters for customization.
+
+### Action hooks
+
+Actions let you insert custom code at specific points in the theme:
+
+- `fl_head_open` - After opening `<head>` tag
+- `fl_body_open` - After opening `<body>` tag
+- `fl_before_header` - Before header section
+- `fl_after_header` - After header section
+- `fl_before_content` - Before content area
+- `fl_after_content` - After content area
+- `fl_before_footer` - Before footer section
+- `fl_after_footer` - After footer section
+
+### Filter hooks
+
+Filters let you modify theme data:
+
+- `fl_topbar_enabled` - Control top bar visibility
+- `fl_header_enabled` - Control header visibility
+- `fl_footer_enabled` - Control footer visibility
+- `fl_nav_toggle_text` - Modify mobile menu button text
+- `fl_social_icons` - Customize social icon order
+
+[View complete hooks and filters reference](/bb-theme/developer/hooks-filters)
+
+## Common customization examples
+
+### Add custom CSS
+
+Add to your child theme's `style.css`:
+
+```css
+/* Custom button styles */
+.fl-button {
+  border-radius: 25px;
+  text-transform: uppercase;
+}
+
+/* Custom header styles */
+.fl-page-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+```
+
+### Add custom PHP function
+
+Add to your child theme's `functions.php`:
+
+```php
+<?php
+/**
+ * Customize theme footer text
+ */
+function my_custom_footer_text() {
+  echo '<p>© ' . date('Y') . ' My Company. All rights reserved.</p>';
+}
+add_action('fl_footer_col1_open', 'my_custom_footer_text');
+```
+
+### Hide header on specific pages
+
+Add to your child theme's `functions.php`:
+
+```php
+<?php
+/**
+ * Hide header on page ID 42
+ */
+function my_hide_header_on_page($enabled) {
+  if (is_page(42)) {
+    return false;
+  }
+  return $enabled;
+}
+add_filter('fl_header_enabled', 'my_hide_header_on_page');
+```
+
+### Add custom menu location
+
+Add to your child theme's `functions.php`:
+
+```php
+<?php
+/**
+ * Register custom menu location
+ */
+function my_register_menu_locations() {
+  register_nav_menus(array(
+    'utility-menu' => __('Utility Menu', 'bb-theme-child')
+  ));
+}
+add_action('after_setup_theme', 'my_register_menu_locations');
+```
+
+## Template customization
+
+### Override template files
+
+You can override any parent theme template file:
+
+<Steps>
+  <Step title="Find the template">
+    Locate the template file in the parent theme directory.
+  </Step>
+  
+  <Step title="Copy to child theme">
+    Copy the file to the same relative path in your child theme.
+  </Step>
+  
+  <Step title="Modify the copy">
+    Edit the child theme version. It will be used instead of the parent.
+  </Step>
+</Steps>
+
+### Common template files
+
+- `header.php` - Site header
+- `footer.php` - Site footer
+- `index.php` - Main template
+- `single.php` - Single post template
+- `page.php` - Page template
+- `archive.php` - Archive template
+- `sidebar.php` - Sidebar template
+
+## CSS class reference
+
+BB Theme uses consistent CSS classes for styling:
+
+### Layout classes
+
+- `.fl-page` - Main page container
+- `.fl-page-content` - Content area
+- `.fl-page-header` - Header section
+- `.fl-page-footer` - Footer section
+
+### Header classes
+
+- `.fl-page-header-wrap` - Header wrapper
+- `.fl-page-header-container` - Header container
+- `.fl-page-nav-wrap` - Navigation wrapper
+- `.fl-page-nav` - Navigation menu
+
+### Content classes
+
+- `.fl-post` - Post container
+- `.fl-post-header` - Post header
+- `.fl-post-content` - Post content
+- `.fl-post-footer` - Post footer
+
+### Footer classes
+
+- `.fl-page-footer-wrap` - Footer wrapper
+- `.fl-page-footer-container` - Footer container
+- `.fl-page-footer-widgets` - Footer widgets area
+
+## White labeling
+
+You can white label your child theme for clients:
+
+- Replace `screenshot.png` with custom thumbnail
+- Edit theme details in `style.css` header
+- Customize theme name, author, and description
+- Rename child theme directory
+
+[Learn more about white labeling](/bb-theme/developer/child-themes#white-labeling)
+
+## Code resources
+
+### Auto-generated hook documentation
+
+Complete, up-to-date hook documentation is auto-generated from the code:
+
+[View BB Theme hooks](https://hooks.wpbeaverbuilder.com/bb-theme/)
+
+### Visual hook guide
+
+See visual diagrams showing where hooks fire:
+
+[ProBeaver hook layout](https://probeaver.com/beaver-theme-hooks/)
+
+### Code snippets
+
+Find ready-to-use code snippets in the knowledge base:
+
+- Custom header modifications
+- Footer customizations
+- Menu enhancements
+- Layout adjustments
+- Style overrides
+
+## Best practices
+
+### File organization
+
+- Keep all customizations in child theme
+- Use comments to document your code
+- Organize CSS with clear section headers
+- Create separate files for major features
+
+### Performance
+
+- Only enqueue scripts/styles when needed
+- Minify custom CSS and JavaScript
+- Use conditional loading for page-specific code
+- Optimize images and assets
+
+### Compatibility
+
+- Test with latest WordPress version
+- Check compatibility with popular plugins
+- Follow WordPress coding standards
+- Use proper escaping and sanitization
+
+### Version control
+
+- Use Git for child theme development
+- Commit changes regularly
+- Document major changes in commits
+- Tag stable releases
+
+## Support and community
+
+### Getting help
+
+- Check the knowledge base articles
+- Search the support forums
+- Review code examples
+- Ask in the community Slack
+
+### Contributing
+
+- Report bugs and issues
+- Suggest new features
+- Share your customizations
+- Help other developers
+
+## Related resources
+
+<CardGroup cols={2}>
+  <Card title="WordPress Theme Handbook" icon="book" href="https://developer.wordpress.org/themes/">
+    Official WordPress theme development guide
+  </Card>
+  <Card title="Beaver Builder Plugin API" icon="plug" href="/beaver-builder/developer">
+    Beaver Builder plugin developer resources
+  </Card>
+  <Card title="Customizer settings" icon="sliders" href="/bb-theme/customizer-settings">
+    All available Customizer options
+  </Card>
+  <Card title="Theme defaults" icon="palette" href="/bb-theme/defaults">
+    Understanding default layouts and styles
+  </Card>
+</CardGroup>

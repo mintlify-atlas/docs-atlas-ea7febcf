@@ -1,0 +1,53 @@
+---
+title: Developer resources
+description: Learn how to customize Beaver Themer with hooks, filters, and custom field connections.
+---
+
+Beaver Themer provides extensive customization options for developers who want to extend functionality, add custom field connections, or integrate with custom themes.
+
+## Developer topics
+
+<CardGroup cols={2}>
+  <Card title="Custom fields" icon="database" href="/beaver-themer/developer/custom-fields">
+    Learn how to add custom field connections to the field connections menu
+  </Card>
+  
+  <Card title="Hooks and filters" icon="code" href="/beaver-themer/developer/hooks-filters">
+    Browse the complete reference of Beaver Themer hooks and filters
+  </Card>
+</CardGroup>
+
+## Add theme support
+
+Most themes support Archive, Singular, and 404 layout types out of the box. However, to support the Header, Footer, and Part layout types, the theme must allow its header, footer, and parts to be removed using hooks.
+
+If your theme isn't currently supported, you can add support for headers, footers, and parts by following the instructions in the [custom fields](/beaver-themer/developer/custom-fields) section.
+
+## Common developer tasks
+
+### Add custom field connections
+
+You can use the Beaver Themer APIs to add custom connections to the field connections menu in order to connect any kind of data you want.
+
+See the [Custom fields](/beaver-themer/developer/custom-fields) article for detailed instructions.
+
+### Add theme support for headers and footers
+
+There are other ways than using hooks to remove the theme's headers and footers, but using hooks is the easiest and cleanest. For example, in Genesis you can remove the header with the following code:
+
+```php
+remove_action( 'genesis_header', 'genesis_do_header' );
+```
+
+See the [Custom fields](/beaver-themer/developer/custom-fields) article for complete implementation details.
+
+### Browse hooks and filters
+
+Beaver Themer provides numerous hooks and filters for customizing functionality. See the [Hooks and filters](/beaver-themer/developer/hooks-filters) reference for a complete list.
+
+## Additional resources
+
+For more developer documentation, visit:
+
+- [Beaver Builder Developer Documentation](https://docs.wpbeaverbuilder.com/beaver-builder/developer/)
+- [Beaver Themer Hooks Reference](https://hooks.wpbeaverbuilder.com/bb-themer/)

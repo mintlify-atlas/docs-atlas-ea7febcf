@@ -1,0 +1,80 @@
+---
+title: Header layout type
+description: Learn how to create and customize header layouts that replace your theme's default header.
+---
+
+The Themer Header layout in Beaver Themer overrides the theme's top bar, header, and nav area, as shown in the following diagram, with a typical page on the left and a typical post on the right.
+
+![Diagram of a typical web page structure, highlighting the header area](/img/themer-header-layout-type-7fc6ca05.png)
+
+<Tip>
+For more information about working with WordPress headers, see [this blog post](https://www.wpbeaverbuilder.com/wordpress-website-header/).
+</Tip>
+
+## Choose a Themer Header layout template
+
+After you create a new Header-type Themer layout and launch Beaver Builder, the initial layout contains the **Header 1** layout template, shown in the following screenshot.
+
+![Screenshot of the default Themer Header 1 layout template](/img/themer--layout-types-modules--header-layout-type--1.png)
+
+One advantage of starting with a Themer layout template is that some of the common [field connections](/beaver-themer/field-connections) are built in. For example, the Heading module's **Heading** setting contains the **Site title** field connection. On the front end, this field connection is replaced with the setting in the **Site title** field on the **General** tab in your WordPress settings. This means that if you ever change your site title, you only need to change it in one place.
+
+You can replace any field connection with static text if you prefer.
+
+There are several Themer Header layout templates to choose from. Open the Content panel and click the **Templates** tab to view all available templates. You can start with any template and modify or delete whatever you like.
+
+## Header layout settings
+
+The **Edit Themer layout** screen has the following settings for Header layouts:
+
+- Header properties (sticky, shrink, overlay, described below)
+- The locations on your site where the header applies
+- Optional conditional logic rules
+
+<Note>
+If you set the WordPress edit page's Page Template to a template that has no header for a particular post or page, it will not remove the header produced by a Themer layout. You must control where the Themer header occurs through the **Location** settings.
+</Note>
+
+### Sticky, Shrink, and Overlay settings
+
+There are several settings that control how the header behaves.
+
+#### Sticky
+
+This is equivalent to the fixed header in the Beaver Builder Theme. The header stays in place at the original size while the page is scrolled.
+
+If you set **Sticky** to **Yes**, you then choose device size breakpoints in the **Sticky breakpoint** setting. The **Default** setting supports large devices only (the legacy setting). It also supports the `fl_theme_builder_sticky_header_breakpoint` filter, which enables the sticky header for medium but not small devices.
+
+#### Shrink
+
+(Applies to large devices only)
+
+If you choose a sticky header, you also get the option to shrink it as the page scrolls up. The amount of shrink is determined by the height required for the full-size header logo, text, and menu.
+
+If the **Shrink** setting is set to **Yes** it also follows the **Sticky header** setting for device size.
+
+#### Overlay
+
+(Applies at all screen sizes)
+
+The row background for the header becomes transparent, and the content row moves up to the top of the window.
+
+Here's an example of a header overlay:
+
+![Themer Header layout overlay example](/img/themer-header-layout-type-98c672a3.jpg)
+
+In this screenshot, the background image is set on the first row in the content area (along with a dark gray background overlay color set to 50% opacity). That row's bottom padding is set to 160px to push down the page title so it doesn't interfere with the header.
+
+The **Overlay** setting is independent of the "Sticky header" setting and works at all device sizes.
+
+### Combining sticky, shrink, and overlay
+
+You can enable all three sticky, shrink, and overlay settings, and here's how they work in combination:
+
+- If you enable **Overlay** plus **Sticky**, on large devices the transparent header converts to a sticky header as soon as you start to scroll. The sticky header background is whatever you set for the header row background.
+
+  ![Overlay plus sticky Themer header](/img/themer-header-layout-type-b17904f2.jpg)
+
+- If you enable **Overlay** plus **Sticky** plus **Shrink**, the header shrinks as you continue to scroll down, just the way it does when there's no overlay.
+
+  ![Overlay plus sticky plus shrink Themer header](/img/themer-header-layout-type-74192844.jpg)

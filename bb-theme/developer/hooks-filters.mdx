@@ -1,0 +1,625 @@
+---
+title: Hooks and filters reference
+description: Complete reference for BB Theme action hooks and filter hooks for custom development.
+---
+
+BB Theme provides numerous action hooks and filter hooks that allow you to customize and extend the theme without modifying core files.
+
+## Auto-generated documentation
+
+Complete, up-to-date hook documentation is auto-generated from the code:
+
+[View BB Theme Hooks](https://hooks.wpbeaverbuilder.com/bb-theme/)
+
+For a visual layout of common theme hooks:
+
+[ProBeaver Hook Layout](https://probeaver.com/beaver-theme-hooks/)
+
+## Action hooks
+
+Action hooks let you insert custom code at specific points in the theme.
+
+### Head and body
+
+#### fl_head_open
+
+Fires after the opening `<head>` tag.
+
+```php
+function my_head_open() {
+  echo '<script>console.log("Head opened!");</script>';
+}
+add_action('fl_head_open', 'my_head_open');
+```
+
+#### fl_head
+
+BB Theme's styles and custom code are loaded after `wp_head` to ensure they aren't overridden by plugins. Use the `fl_head` action if you need to load something after BB Theme's styles.
+
+```php
+function my_head() {
+  echo '<link rel="stylesheet" href="custom.css">';
+}
+add_action('fl_head', 'my_head');
+```
+
+#### fl_body_open
+
+Fires after the opening `<body>` tag.
+
+```php
+function my_body_open() {
+  echo '<div>Content right after body tag</div>';
+}
+add_action('fl_body_open', 'my_body_open');
+```
+
+### Page structure
+
+#### fl_page_open
+
+Fires after the opening `fl-page` `<div>` tag.
+
+```php
+function my_page_open() {
+  echo '<div class="custom-banner">Special Offer!</div>';
+}
+add_action('fl_page_open', 'my_page_open');
+```
+
+#### fl_page_close
+
+Fires before the closing `fl-page` `<div>` tag.
+
+```php
+function my_page_close() {
+  echo '<div class="custom-footer-banner">Thank you!</div>';
+}
+add_action('fl_page_close', 'my_page_close');
+```
+
+### Top bar hooks
+
+#### fl_before_top_bar
+
+Fires before the opening top bar `<div>` tag.
+
+```php
+function my_before_top_bar() {
+  echo '<div class="announcement">Free shipping today!</div>';
+}
+add_action('fl_before_top_bar', 'my_before_top_bar');
+```
+
+#### fl_after_top_bar
+
+Fires after the closing top bar `<div>` tag.
+
+```php
+function my_after_top_bar() {
+  echo '<div class="divider"></div>';
+}
+add_action('fl_after_top_bar', 'my_after_top_bar');
+```
+
+#### fl_top_bar_col1_open / fl_top_bar_col1_close
+
+Fires at the beginning and end of the first top bar column.
+
+```php
+function my_top_bar_col1_open() {
+  echo '<span class="icon">📞</span>';
+}
+add_action('fl_top_bar_col1_open', 'my_top_bar_col1_open');
+```
+
+#### fl_top_bar_col2_open / fl_top_bar_col2_close
+
+Fires at the beginning and end of the second top bar column.
+
+### Header hooks
+
+#### fl_before_header
+
+Fires before the opening header `<div>` tag.
+
+```php
+function my_before_header() {
+  echo '<div class="promo-banner">Sale ends today!</div>';
+}
+add_action('fl_before_header', 'my_before_header');
+```
+
+#### fl_after_header
+
+Fires after the closing header `<div>` tag.
+
+```php
+function my_after_header() {
+  echo '<div class="breadcrumbs">' . get_breadcrumbs() . '</div>';
+}
+add_action('fl_after_header', 'my_after_header');
+```
+
+#### fl_header_content_open / fl_header_content_close
+
+Fires at the beginning and end of the header content section (available in Nav Bottom header layout).
+
+```php
+function my_header_content_open() {
+  echo '<div class="header-notice">Special announcement</div>';
+}
+add_action('fl_header_content_open', 'my_header_content_open');
+```
+
+### Content hooks
+
+#### fl_before_content
+
+Fires before the opening content `<div>` tag.
+
+```php
+function my_before_content() {
+  if (is_front_page()) {
+    echo '<div class="hero-section">Welcome!</div>';
+  }
+}
+add_action('fl_before_content', 'my_before_content');
+```
+
+#### fl_content_open
+
+Fires after the opening content `<div>` tag.
+
+```php
+function my_content_open() {
+  echo '<!-- Content starts here -->';
+}
+add_action('fl_content_open', 'my_content_open');
+```
+
+#### fl_content_close
+
+Fires before the closing content `<div>` tag.
+
+```php
+function my_content_close() {
+  echo '<!-- Content ends here -->';
+}
+add_action('fl_content_close', 'my_content_close');
+```
+
+#### fl_after_content
+
+Fires after the closing content `<div>` tag.
+
+```php
+function my_after_content() {
+  echo '<div class="call-to-action">Contact us today!</div>';
+}
+add_action('fl_after_content', 'my_after_content');
+```
+
+### Post hooks
+
+#### fl_post_top_meta_open / fl_post_top_meta_close
+
+Fires at the beginning and end of the top post meta section.
+
+```php
+function my_post_top_meta_open() {
+  echo '<span class="reading-time">5 min read</span>';
+}
+add_action('fl_post_top_meta_open', 'my_post_top_meta_open');
+```
+
+#### fl_post_bottom_meta_open / fl_post_bottom_meta_close
+
+Fires at the beginning and end of the bottom post meta section.
+
+```php
+function my_post_bottom_meta_close() {
+  echo '<div class="share-buttons">' . get_share_buttons() . '</div>';
+}
+add_action('fl_post_bottom_meta_close', 'my_post_bottom_meta_close');
+```
+
+### Sidebar hooks
+
+#### fl_sidebar_open
+
+Fires after the opening `fl-sidebar` `<div>` tag.
+
+```php
+function my_sidebar_open() {
+  echo '<div class="sidebar-header">Quick Links</div>';
+}
+add_action('fl_sidebar_open', 'my_sidebar_open');
+```
+
+#### fl_sidebar_close
+
+Fires before the closing `fl-sidebar` `<div>` tag.
+
+```php
+function my_sidebar_close() {
+  echo '<div class="sidebar-footer">Need help?</div>';
+}
+add_action('fl_sidebar_close', 'my_sidebar_close');
+```
+
+### Footer hooks
+
+#### fl_footer_wrap_open
+
+Fires after the opening footer wrap `<div>` tag.
+
+```php
+function my_footer_wrap_open() {
+  echo '<!-- Footer section starts -->';
+}
+add_action('fl_footer_wrap_open', 'my_footer_wrap_open');
+```
+
+#### fl_before_footer_widgets
+
+Fires before the opening footer widgets `<div>` tag.
+
+```php
+function my_before_footer_widgets() {
+  echo '<div class="newsletter-signup">' . get_newsletter_form() . '</div>';
+}
+add_action('fl_before_footer_widgets', 'my_before_footer_widgets');
+```
+
+#### fl_after_footer_widgets
+
+Fires after the closing footer widgets `<div>` tag.
+
+#### fl_before_footer
+
+Fires before the opening footer `<div>` tag.
+
+```php
+function my_before_footer() {
+  echo '<div class="pre-footer">Trust badges</div>';
+}
+add_action('fl_before_footer', 'my_before_footer');
+```
+
+#### fl_after_footer
+
+Fires after the closing footer `<div>` tag.
+
+```php
+function my_after_footer() {
+  echo '<div class="bottom-bar">Additional links</div>';
+}
+add_action('fl_after_footer', 'my_after_footer');
+```
+
+#### fl_footer_col1_open / fl_footer_col1_close
+
+Fires at the beginning and end of the first footer column.
+
+```php
+function my_footer_col1_open() {
+  echo '<div class="footer-logo"><img src="logo.png"></div>';
+}
+add_action('fl_footer_col1_open', 'my_footer_col1_open');
+```
+
+#### fl_footer_col2_open / fl_footer_col2_close
+
+Fires at the beginning and end of the second footer column.
+
+#### fl_footer_wrap_close
+
+Fires before the closing footer wrap `<div>` tag.
+
+```php
+function my_footer_wrap_close() {
+  echo '<!-- Footer section ends -->';
+}
+add_action('fl_footer_wrap_close', 'my_footer_wrap_close');
+```
+
+### Comments hooks
+
+#### fl_comments_open
+
+Fires after the opening `fl-comments` `<div>` tag.
+
+```php
+function my_comments_open() {
+  echo '<p>Join the conversation!</p>';
+}
+add_action('fl_comments_open', 'my_comments_open');
+```
+
+#### fl_comments_close
+
+Fires before the closing `fl-comments` `<div>` tag.
+
+### Body close
+
+#### fl_body_close
+
+Fires before the closing `</body>` tag.
+
+```php
+function my_body_close() {
+  echo '<script>// Analytics code</script>';
+}
+add_action('fl_body_close', 'my_body_close');
+```
+
+## Filter hooks
+
+Filter hooks let you modify theme data and functionality.
+
+### fl_font_subset
+
+Add subsets to a Google font chosen in the Customizer.
+
+```php
+function my_font_subset($subset, $font) {
+  if ($font == 'Acme') {
+    $subset = '&subset=latin,latin-ext';
+  }
+  return $subset;
+}
+add_filter('fl_font_subset', 'my_font_subset', 10, 2);
+```
+
+### fl_topbar_enabled
+
+Override the display of the theme's top bar. Return `false` to hide it, `true` to show it.
+
+```php
+function my_topbar_enabled($enabled) {
+  if (is_page('landing')) {
+    return false; // Hide top bar on landing page
+  }
+  return $enabled;
+}
+add_filter('fl_topbar_enabled', 'my_topbar_enabled');
+```
+
+### fl_fixed_header_enabled
+
+Override the display of the theme's fixed header.
+
+```php
+function my_fixed_header_enabled($enabled) {
+  if (is_front_page()) {
+    return false; // Disable fixed header on home page
+  }
+  return $enabled;
+}
+add_filter('fl_fixed_header_enabled', 'my_fixed_header_enabled');
+```
+
+### fl_header_enabled
+
+Override the display of the theme's header.
+
+```php
+function my_header_enabled($enabled) {
+  if (is_page('splash')) {
+    return false; // Hide header on splash page
+  }
+  return $enabled;
+}
+add_filter('fl_header_enabled', 'my_header_enabled');
+```
+
+### fl_nav_toggle_text
+
+Change the text or icon shown in the mobile nav toggle button.
+
+```php
+function my_nav_toggle_text($text) {
+  return 'Main Menu';
+}
+add_filter('fl_nav_toggle_text', 'my_nav_toggle_text');
+```
+
+### fl_footer_enabled
+
+Override the display of the theme's footer.
+
+```php
+function my_footer_enabled($enabled) {
+  if (is_page('checkout')) {
+    return false; // Hide footer on checkout page
+  }
+  return $enabled;
+}
+add_filter('fl_footer_enabled', 'my_footer_enabled');
+```
+
+### fl_social_icons
+
+Change the order of the social icons. The `$icons` parameter is an array of keys for each icon.
+
+```php
+function my_social_icons($icons) {
+  $icons = array(
+    'facebook',
+    'twitter',
+    'instagram',
+    'linkedin',
+    'youtube',
+    'pinterest',
+  );
+  return $icons;
+}
+add_filter('fl_social_icons', 'my_social_icons');
+```
+
+## Common use cases
+
+### Add Google Analytics
+
+Add tracking code to the head:
+
+```php
+function my_google_analytics() {
+  ?>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXX-Y');
+  </script>
+  <?php
+}
+add_action('fl_head', 'my_google_analytics');
+```
+
+### Add custom copyright text
+
+Add dynamic copyright to footer:
+
+```php
+function my_footer_copyright() {
+  echo '<p>&copy; ' . date('Y') . ' ' . get_bloginfo('name') . '. All rights reserved.</p>';
+}
+add_action('fl_footer_col1_open', 'my_footer_copyright');
+```
+
+### Add breadcrumbs
+
+Insert breadcrumbs after header:
+
+```php
+function my_breadcrumbs() {
+  if (function_exists('yoast_breadcrumb')) {
+    yoast_breadcrumb('<div class="breadcrumbs">', '</div>');
+  }
+}
+add_action('fl_after_header', 'my_breadcrumbs');
+```
+
+### Conditional header display
+
+Hide header on specific pages:
+
+```php
+function my_conditional_header($enabled) {
+  // Hide header on page IDs 5, 10, and 15
+  if (is_page(array(5, 10, 15))) {
+    return false;
+  }
+  return $enabled;
+}
+add_filter('fl_header_enabled', 'my_conditional_header');
+```
+
+### Add custom widget area
+
+Register and display custom widget area:
+
+```php
+// Register widget area
+function my_register_widget_area() {
+  register_sidebar(array(
+    'name' => 'After Header',
+    'id' => 'after-header',
+    'before_widget' => '<div class="widget">',
+    'after_widget' => '</div>',
+  ));
+}
+add_action('widgets_init', 'my_register_widget_area');
+
+// Display widget area
+function my_display_widget_area() {
+  if (is_active_sidebar('after-header')) {
+    dynamic_sidebar('after-header');
+  }
+}
+add_action('fl_after_header', 'my_display_widget_area');
+```
+
+## Best practices
+
+### Use child theme
+
+Always add hooks in your child theme's `functions.php`, never in the parent theme.
+
+### Check conditions
+
+Use conditional tags to control when hooks fire:
+
+```php
+function my_hook_function() {
+  if (is_front_page()) {
+    // Code for home page only
+  }
+  if (is_singular('post')) {
+    // Code for single posts only
+  }
+}
+```
+
+### Priority and arguments
+
+Understand hook priority and number of arguments:
+
+```php
+// Higher priority (runs later)
+add_action('fl_before_header', 'my_function', 20);
+
+// Accept 2 arguments
+add_filter('fl_font_subset', 'my_function', 10, 2);
+```
+
+### Clean code
+
+- Use proper indentation
+- Add comments explaining your code
+- Use meaningful function names
+- Follow WordPress coding standards
+
+## Debugging hooks
+
+### Check if hook exists
+
+```php
+if (has_action('fl_before_header')) {
+  echo 'Hook exists!';
+}
+```
+
+### See all hooked functions
+
+```php
+global $wp_filter;
+print_r($wp_filter['fl_before_header']);
+```
+
+### Remove a hooked function
+
+```php
+remove_action('fl_before_header', 'function_name');
+```
+
+## Related resources
+
+<CardGroup cols={2}>
+  <Card title="Child themes" icon="code-branch" href="/bb-theme/developer/child-themes">
+    Learn about creating and using child themes
+  </Card>
+  <Card title="Developer resources" icon="code" href="/bb-theme/developer">
+    All BB Theme developer documentation
+  </Card>
+  <Card title="WordPress Plugin API" icon="plug" href="https://developer.wordpress.org/plugins/hooks/">
+    Official WordPress hooks documentation
+  </Card>
+  <Card title="Auto-generated hooks" icon="link" href="https://hooks.wpbeaverbuilder.com/bb-theme/">
+    Complete, up-to-date hook reference
+  </Card>
+</CardGroup>
