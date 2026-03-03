@@ -1,0 +1,251 @@
+{
+  "projectType": "saas",
+  "projectName": "Beaver Builder",
+  "projectDescription": "A WordPress page builder suite including the Beaver Builder plugin, Beaver Themer addon, BB Theme, and Assistant Pro for creating custom layouts with a drag-and-drop interface.",
+  "theme": "maple",
+  "primaryColor": "#006ad4",
+  "lightColor": "#0075e9",
+  "darkColor": "#005fbf",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Beaver Builder",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "beaver-builder/introduction/index",
+              "beaver-builder/introduction/faq",
+              "beaver-builder/introduction/about-release",
+              "beaver-builder/introduction/releases-versioning",
+              "beaver-builder/introduction/accessibility",
+              "beaver-builder/introduction/translations"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "beaver-builder/getting-started/what-can-i-do",
+              "beaver-builder/getting-started/system-requirements",
+              "beaver-builder/getting-started/install",
+              "beaver-builder/getting-started/launch-builder"
+            ]
+          },
+          {
+            "group": "User Interface",
+            "pages": [
+              "beaver-builder/user-interface/index",
+              "beaver-builder/user-interface/top-bar",
+              "beaver-builder/user-interface/outline-panel",
+              "beaver-builder/user-interface/tools-menu",
+              "beaver-builder/user-interface/content-panel"
+            ]
+          },
+          {
+            "group": "Layouts",
+            "pages": [
+              "beaver-builder/layouts/index",
+              "beaver-builder/layouts/rows",
+              "beaver-builder/layouts/columns",
+              "beaver-builder/layouts/modules",
+              "beaver-builder/layouts/templates"
+            ]
+          },
+          {
+            "group": "Settings & Configuration",
+            "pages": [
+              "beaver-builder/settings/index",
+              "beaver-builder/settings/global-settings",
+              "beaver-builder/settings/module-settings",
+              "beaver-builder/settings/responsive-settings"
+            ]
+          },
+          {
+            "group": "Advanced Features",
+            "pages": [
+              "beaver-builder/advanced/index",
+              "beaver-builder/advanced/custom-css",
+              "beaver-builder/advanced/javascript",
+              "beaver-builder/advanced/responsive-editing"
+            ]
+          },
+          {
+            "group": "Developer",
+            "pages": [
+              "beaver-builder/developer/index",
+              "beaver-builder/developer/custom-modules",
+              "beaver-builder/developer/hooks-filters",
+              "beaver-builder/developer/custom-templates"
+            ]
+          },
+          {
+            "group": "Account & License",
+            "pages": [
+              "beaver-builder/account/index",
+              "beaver-builder/account/license-types",
+              "beaver-builder/account/activation",
+              "beaver-builder/account/renewals"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Beaver Themer",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "beaver-themer/introduction/index",
+              "beaver-themer/introduction/about-release"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "beaver-themer/getting-started/index",
+              "beaver-themer/getting-started/install",
+              "beaver-themer/getting-started/first-layout"
+            ]
+          },
+          {
+            "group": "Layout Types",
+            "pages": [
+              "beaver-themer/layout-types/index",
+              "beaver-themer/layout-types/headers",
+              "beaver-themer/layout-types/footers",
+              "beaver-themer/layout-types/singular",
+              "beaver-themer/layout-types/archive"
+            ]
+          },
+          {
+            "group": "Field Connections",
+            "pages": [
+              "beaver-themer/field-connections/index",
+              "beaver-themer/field-connections/basics",
+              "beaver-themer/field-connections/advanced"
+            ]
+          },
+          {
+            "group": "Conditional Logic",
+            "pages": [
+              "beaver-themer/conditional-logic/index"
+            ]
+          },
+          {
+            "group": "Developer",
+            "pages": [
+              "beaver-themer/developer/index",
+              "beaver-themer/developer/custom-fields",
+              "beaver-themer/developer/hooks-filters"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "BB Theme",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "bb-theme/introduction/index"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "bb-theme/getting-started/index",
+              "bb-theme/getting-started/install",
+              "bb-theme/getting-started/customizer-overview"
+            ]
+          },
+          {
+            "group": "Customizer Settings",
+            "pages": [
+              "bb-theme/customizer-settings/index",
+              "bb-theme/customizer-settings/general",
+              "bb-theme/customizer-settings/header",
+              "bb-theme/customizer-settings/content",
+              "bb-theme/customizer-settings/footer"
+            ]
+          },
+          {
+            "group": "Layout Defaults",
+            "pages": [
+              "bb-theme/defaults/index",
+              "bb-theme/defaults/layout",
+              "bb-theme/defaults/content",
+              "bb-theme/defaults/styles"
+            ]
+          },
+          {
+            "group": "Developer",
+            "pages": [
+              "bb-theme/developer/index",
+              "bb-theme/developer/child-themes",
+              "bb-theme/developer/hooks-filters"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Assistant",
+        "groups": [
+          {
+            "group": "Introduction",
+            "pages": [
+              "assistant/introduction/index"
+            ]
+          },
+          {
+            "group": "Getting Started",
+            "pages": [
+              "assistant/getting-started/what-can-i-do",
+              "assistant/getting-started/create-account",
+              "assistant/getting-started/install",
+              "assistant/getting-started/connect"
+            ]
+          },
+          {
+            "group": "Plugin Features",
+            "pages": [
+              "assistant/plugin/apps",
+              "assistant/plugin/home-app",
+              "assistant/plugin/content-app",
+              "assistant/plugin/media-app",
+              "assistant/plugin/libraries-app"
+            ]
+          },
+          {
+            "group": "Cloud Features",
+            "pages": [
+              "assistant/cloud/index",
+              "assistant/cloud/libraries",
+              "assistant/cloud/sharing",
+              "assistant/cloud/team-management"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Drag-and-drop page builder for WordPress",
+    "Theme layout templates with Beaver Themer",
+    "Custom WordPress theme (BB Theme)",
+    "Cloud-based asset management with Assistant Pro",
+    "Responsive design editing",
+    "Custom modules and templates",
+    "Field connections for dynamic content",
+    "Developer hooks and filters"
+  ],
+  "publicApiSurface": [
+    "FLBuilder - Main builder class",
+    "FLBuilderModel - Data model methods",
+    "FLTheme - Theme customization API",
+    "fl_builder_before_save_layout - Hook",
+    "fl_builder_after_save_layout - Hook",
+    "fl_builder_register_module - Module registration",
+    "fl_builder_register_settings_form - Settings form registration",
+    "fl_theme_compile_less - Theme compilation hook"
+  ]
+}
